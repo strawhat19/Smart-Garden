@@ -1,0 +1,824 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--font);
+  background: var(--bg);
+  overflow-x: hidden !important;
+  scroll-behavior: smooth !important;
+  font-family: "Nunito", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+}
+
+:root {
+  --bg: #fffcf7;
+  --font: #23211f;
+  --font: #2d2b2b;
+  --error: #d25050;
+  --links: #9b9b9b;
+  --primary: #e56241;
+  --testing: #ec16ff;
+  --secondary: #1daf9e;
+  --hightlight: #e9c46a;
+  --footerBGDark: #191716;
+  --primaryShadow: #ae4c33;
+  --footerBGLight: #fff1da;
+  --primaryVariant: #f4a261;
+  --secondaryVariant: #264653;
+  --blackGlass: rgba(0, 0, 0, 0.75);
+  --transition: 0.3s cubic-bezier(0.77, 0.2, 0.05, 1) !important;
+}
+
+::selection {
+  color: white;
+  background: var(--hightlight);
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  transition: var(--transition);
+  background: var(--footerBGLight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--font);
+  transition: var(--transition);
+  &:hover {
+    background: var(--primary) !important;
+  }
+}
+
+a {
+  color: var(--links);
+  text-decoration: none;
+}
+
+.container {
+  padding: 0 0rem;
+}
+
+p {
+  color: var(--font);
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Nunito";
+}
+
+span {
+  &:has(.logo) {
+    max-width: fit-content;
+  }
+}
+
+header {
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  padding: 1.9em 2em;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+  background: rgba(255, 252, 247, 0.85);
+  &.scrolledHeader {
+    padding: 1em;
+  }
+  @media (max-width: 992px) {
+    padding: 1em;
+  }
+  .innerHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+    justify-content: space-between;
+    a {
+      height: 100%;
+      display: flex;
+      grid-gap: 0.3em;
+      color: var(--font);
+      align-items: center;
+      font-size: 25px !important;
+      font-weight: 700 !important;
+      transition: var(--transition);
+      &:hover {
+        color: var(--primary);
+      }
+      @media (max-width: 992px) {
+        grid-gap: 0.1em;
+        font-weight: 600 !important;
+        font-size: 18px !important;
+      }
+    }
+    span {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-start;
+      img {
+        margin: 0 !important;
+        max-width: 4em;
+      }
+    }
+    .buttons {
+      display: flex;
+      grid-gap: 1em;
+      @media (max-width: 992px) {
+        grid-gap: 0.1em;
+        .headerBtn {
+          font-size: 14px !important;
+          min-width: none !important;
+        }
+      }
+    }
+  }
+}
+
+.form {
+  height: 730px;
+  margin: 0 auto;
+  max-width: 1122px;
+  min-height: 730px;
+  background: url(/assets/formBG.png);
+  .innerForm {
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    .formElements {
+      width: 80%;
+      height: 100%;
+      display: flex;
+      margin: 0 auto;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      .formLabel {
+        font-size: 48px;
+        font-weight: bold;
+      }
+      form {
+        padding: 1em 0;
+        .btn {
+          width: 100%;
+        }
+        .inputItem {
+          display: flex;
+          max-width: 300px;
+          margin: 1.5em auto;
+          flex-direction: column;
+          color: rgba(0,0,0,0.5);
+          ion-label {
+            padding: 5px 0;
+            font-weight: 600;
+            text-align: left;
+          }
+          input {
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid rgba(0,0,0,0.5);
+          }
+        }
+      }
+    }
+    #formBG {
+      max-width: 1122px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      text-align: center;
+      margin-right: auto;
+    }
+  }
+}
+
+@media (max-width: 376px) {
+  .mainSpace {
+    h1 {
+      margin-left: -60px;
+      margin-top: -20px !important;
+    }
+  }
+}
+
+button {
+  font-family: "Nunito" !important;
+  color: var(--bg) !important;
+  background: var(--font) !important;
+  padding: 0.5em 2em !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  text-transform: capitalize !important;
+  border-radius: 15px !important;
+  transition: var(--transition) !important;
+  &:hover {
+    color: var(--bg) !important;
+    background: var(--primary) !important;
+  }
+  &:active {
+    color: var(--bg) !important;
+    background: var(--primaryShadow) !important;
+  }
+  &.lightBtn {
+    color: var(--font) !important;
+    background: var(--bg) !important;
+    transition: var(--transition) !important;
+    &:hover {
+      color: var(--primary) !important;
+      background: var(--bg) !important;
+    }
+    &:active {
+      color: var(--primaryShadow) !important;
+      background: var(--bg) !important;
+    }
+  }
+}
+
+main {
+  padding: 145px 4em 6em;
+  position: relative;
+  background: var(--footerBGLight);
+  flex: 1 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom-right-radius: 100px;
+  transition: var(--transition);
+  @media (min-width: 992px) {
+    background: var(--bg) !important;
+  }
+  .sideMenu {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1.5em;
+    color: var(--font);
+    align-items: center;
+    justify-content: center;
+    margin-top: -5em;
+    z-index: 1;
+    transition: var(--transition);
+    @media (max-width: 992px) {
+      margin-top: -10em;
+      position: relative;
+      margin-right: -1em;
+      left: -30px;
+    }
+    div {
+      cursor: pointer;
+      transition: var(--transition);
+      svg {
+        &:hover {
+          transition: var(--transition);
+          color: var(--primary) !important;
+        }
+      }
+      &:hover {
+        span {
+          transition: var(--transition);
+          background: var(--primary) !important;
+        }
+      }
+    }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      grid-gap: 0.2em;
+      span {
+        margin: 0 !important;
+        padding: 0 !important;
+        border-radius: 4px;
+        height: 3px;
+        width: 20px;
+        background: var(--font);
+        &.top {
+          width: 16px;
+        }
+        &.bottom {
+          width: 12px;
+        }
+      }
+    }
+    .search {
+      svg {
+        font-size: 20px;
+        color: var(--font);
+      }
+    }
+  }
+  .innerMain {
+    width: 100%;
+    grid-gap: 4em;
+    display: flex;
+    padding-right: 1em;
+    align-items: center;
+    flex-direction: column;
+    .mainBanner {
+      display: flex;
+      grid-gap: 3em;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
+      background: linear-gradient(transparent 90%, var(--bg)),
+        url(/assets/mainGraphic.png) !important;
+      background-size: contain !important;
+      border-radius: 35px;
+      justify-content: flex-end;
+      height: 100%;
+      min-height: 852.83px;
+      background-repeat: no-repeat !important;
+      transition: var(--transition);
+      @media (max-width: 992px) {
+        background: none !important;
+        min-height: 525px;
+      }
+      .textCol {
+        min-width: 930px !important;
+        margin-top: -5.5em;
+        @media (min-width: 1670px) {
+          min-width: 1100px !important;
+        }
+        @media (min-width: 1600px) {
+          transform: scale(1.3);
+          padding: 6em;
+          padding-left: 0;
+        }
+        @media (max-width: 992px) {
+          min-width: 0 !important;
+          h1 {
+            font-size: 100px !important;
+            text-align: right;
+            margin-bottom: 0.1em;
+          }
+          p {
+            font-size: 16px;
+            padding-left: 5em;
+            max-width: unset !important;
+            margin-bottom: 0 !important;
+          }
+        }
+        h1 {
+          font-size: 124px;
+          line-height: 124px;
+          display: flex;
+          flex-direction: column;
+          margin-top: 0;
+          margin-bottom: 0.1em;
+          .bottomText {
+            padding-left: 0.5em;
+            position: relative;
+            right: -30px;
+          }
+        }
+        p {
+          --subtextHeight: 100px;
+          max-height: var(--subtextHeight);
+          min-height: var(--subtextHeight);
+          text-align: right;
+          overflow: overlay;
+          max-width: 515px;
+          @media (max-width:1365px) {
+            max-width: 415px;
+          }
+          margin-right: 0 !important;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .explore {
+    right: 15em;
+    width: 200px;
+    height: 200px;
+    bottom: 215px;
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    align-items: center;
+    border-radius: 100px;
+    background: var(--font);
+    justify-content: center;
+    transition: var(--transition);
+    border-bottom-right-radius: 25px;
+    &:hover {
+      .arrow {
+        background: var(--primary) !important;
+        color: var(--bg) !important;
+      }
+    }
+    .innerExplore {
+      position: relative;
+      .arrow {
+        position: absolute;
+        bottom: -75px;
+        right: -52px;
+        border-radius: 100px !important;
+        background: var(--bg);
+        padding: 0 !important;
+        max-width: 30px !important;
+        max-height: 30px !important;
+        min-width: 30px !important;
+        max-height: 30px !important;
+        width: 30px !important;
+        height: 30px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+      p {
+        color: var(--bg);
+        font-weight: 400;
+      }
+    }
+    @media (max-width: 992px) {
+      bottom: -35px;
+      right: 3em;
+    }
+    @media (max-width: 678px) {
+      bottom: -85px;
+      right: 3em;
+    }
+  }
+}
+
+.hiddenButton {
+  opacity: 0;
+}
+
+#topButton {
+  display: block;
+  position: fixed;
+  bottom: 60px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px !important;
+  cursor: pointer;
+  border-radius: 7px !important;
+  margin: 0 !important;
+  outline: none !important;
+  border: none !important;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  padding: 0.3em 0.7em !important;
+  min-width: 35px !important;
+  min-height: 35px !important;
+  font-weight: 700 !important;
+  color: var(--bg) !important;
+  font-family: "montserrat" !important;
+  -webkit-animation: fadeIn 1000ms ease-in-out;
+  animation: fadeIn 1000ms ease-in-out;
+  background: var(--font) !important;
+  transition: var(--transition) !important;
+  .upArrow {
+    bottom: -3px;
+    position: relative;
+    transition: var(--transition) !important;
+  }
+  &:active {
+    background: black;
+    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.8);
+    color: var(--secondary);
+  }
+  &:hover {
+    background: var(--secondary) !important;
+    color: var(--bg) !important;
+    &::before {
+      transform: scale(1, 1);
+      opacity: 1;
+    }
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 7px !important;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform-origin: top;
+    transform: scale(0, 1);
+    transition: var(--transition);
+  }
+  @media (max-width: 992px) {
+    bottom: 10px;
+  }
+}
+
+.scrollToDiscover {
+  position: absolute;
+  bottom: 325px;
+  left: -3.4em;
+  font-weight: 700;
+  font-family: "Nunito Sans";
+  transform: rotate(-90deg);
+  display: flex;
+  grid-gap: 5em;
+  transition: var(--transition);
+  cursor: pointer;
+  svg {
+    transform: rotate(90deg);
+    transition: var(--transition);
+    path {
+      fill: var(--font) !important;
+      stroke: var(--font) !important;
+      stroke-width: 2;
+      stroke-linecap: round;
+      transition: var(--transition);
+    }
+  }
+  @media (max-width: 992px) {
+    bottom: 250px;
+    left: -80px;
+  }
+  &:hover {
+    color: var(--primary);
+    svg {
+      path {
+        fill: var(--primary) !important;
+        stroke: var(--primary) !important;
+      }
+    }
+  }
+}
+
+.primaryVariant {
+  color: var(--primaryVariant);
+}
+
+.sectionEndText {
+  width: 100%;
+  padding: 3em 5em;
+  font-weight: 700;
+  font-family: "Nunito Sans";
+  letter-spacing: 5px;
+  text-align: right;
+  @media (max-width: 992px) {
+    font-size: 12px !important;
+    padding: 3em 7em 3em 0em;
+    letter-spacing: 3px;
+    margin-top: 130px;
+    font-weight: 800;
+  }
+}
+
+.spacer {
+  min-height: 1vh;
+  @media (max-width: 678px) {
+    min-height: 14vh;
+  }
+}
+
+// Modals
+.MuiBackdrop-root {
+  backdrop-filter: blur(5px);
+  background: var(--blackGlass) !important;
+  transition: var(--transition);
+}
+
+div[role="presentation"] {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Nunito";
+  font-size: 2em;
+  color: white;
+  width: 85%;
+  margin: 0 auto;
+  transition: var(--transition);
+  .innerModal {
+    width: 100%;
+    text-align: center;
+    outline: none;
+    .innerContent {
+      width: 100%;
+      text-align: center;
+      outline: none;
+      display: flex;
+      flex-direction: column;
+      grid-gap: 1em;
+      justify-content: center;
+      align-items: center;
+      .searchText {
+        display: flex;
+        grid-gap: 0.3em;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      .searchField {
+        width: 300px;
+        height: 50px;
+        padding: 1em;
+        border-radius: 12px;
+        outline: none !important;
+        border: 3px solid var(--links) !important;
+        font-family: "Nunito";
+        &::placeholder {
+          font-family: "Nunito";
+          color: var(--links);
+          font-size: 1.2em;
+          font-weight: 700;
+        }
+      }
+      svg {
+        font-size: 0.85em;
+      }
+    }
+  }
+}
+
+.css-4t3x6l-MuiPaper-root-MuiDrawer-paper {
+  background: var(--bg) !important;
+  color: var(--font) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em 1.5em 1em 1em;
+  justify-content: space-between;
+  background: white !important;
+  .innerMenu {
+    display: flex;
+    font-size: 16px;
+    grid-gap: 0.65em;
+    flex-direction: column;
+    align-items: flex-start;
+    // padding: 1em 2.5em 1em 1em;
+    animation: fadeIn 1000ms ease-in-out;
+    a[title="Home"] {
+      left: -12px;
+      grid-gap: 0.1em;
+      position: relative;
+      font-size: 20px !important;
+      transition: var(--transition);
+      &:hover {
+        color: var(--primary) !important;
+      }
+    }
+    .mobileLogout {
+      font-size: 1em !important;
+      background: var(--font) !important;
+      color: var(--bg) !important;
+      margin-top: 1em !important;
+      grid-gap: 0.3em;
+      transition: var(--transition);
+      &:hover {
+        background: var(--primary) !important;
+      }
+    }
+    .firstLink {
+      padding-top: 1em;
+    }
+    a {
+      width: 100%;
+      font-size: 16px;
+      text-align: left;
+      text-decoration: none;
+      grid-gap: 0.4em;
+      font-family: "Nunito";
+      font-weight: 700;
+      color: var(--font) !important;
+      &:first-child {
+        width: 100%;
+        text-align: center;
+      }
+      svg {
+        color: var(--primary);
+        font-size: 14px;
+        min-width: 17px;
+      }
+    }
+  }
+  
+  .menuFooter {
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+    grid-gap: 0.65em;
+    flex-direction: column;
+    align-items: flex-start;
+    // padding: 1em 1em 2em 2em;
+    animation: fadeIn 1s ease-in-out;
+    a {
+      font-size: 16px !important;
+      color: var(--font);
+      font-family: "Nunito";
+      font-weight: 700;
+      svg {
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+.hoverLink {
+  display: flex;
+  grid-gap: 0.3em;
+  align-items: center;
+  position: relative;
+  transition: var(--transition);
+  &::before {
+    content: "" !important;
+    background: var(--primary);
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    display: block;
+    bottom: -3px;
+    right: 0;
+    z-index: 0;
+    transform-origin: 0% 100%;
+    transform: scale(0, 1);
+    transition: var(--transition);
+  }
+  &:hover {
+    transition: var(--transition);
+    &::before {
+      transform: scale(1, 1);
+      transition: 500ms ease-in-out;
+    }
+  }
+}
+
+a[title="Home"] {
+  display: flex;
+  grid-gap: 0.3em;
+  align-items: center;
+  font-weight: 600 !important;
+  font-size: 25px !important;
+  color: var(--font);
+  height: 100%;
+  transition: var(--transition);
+  &:hover {
+    color: var(--primary);
+  }
+  @media (max-width: 992px) {
+    grid-gap: 0.1em;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+  }
+  span {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    img {
+      margin: 0 !important;
+      max-width: 4em;
+    }
+  }
+}
+
+@media (min-width: 1365px) and (max-width: 1792px) {
+  .mainSpace {
+    left: -25px;
+    top: -25px;
+  }
+}
+@media (min-width: 1793px) {
+  .mainSpace {
+    left: -70px;
+    top: -35px;
+  }
+}
+
+@media (max-width: 1365px) and (min-width: 987px) {
+  .mainSpace {
+    margin-top: -250px;
+  }
+  #mainspacercol {
+    min-width: 250px;
+  }
+  main .explore {
+    bottom: 410px;
+    right: 100px;
+  }
+}
