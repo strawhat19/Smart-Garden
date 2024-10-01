@@ -125,7 +125,7 @@ export default function Home() {
         {form === `signup` ? <Signup /> : <Signin />}
         <div className="sectionEndText">
           <FontAwesomeIcon icon={faCopyright} style={{ paddingRight: 15 }} className={`primaryVariant`} />
-          COPYRIGHT <span className={`primaryVariant`}>{`//`}</span> 2024
+          COPYRIGHT <span className={`primaryVariant`}>{`//`}</span> {new Date().getFullYear()}
         </div>
       </div>
     </appContext.Provider>
