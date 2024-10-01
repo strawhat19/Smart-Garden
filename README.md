@@ -1,6 +1,6 @@
 # Smart Garden
 
-Smart Garden
+Smart Garden - A tool to help healthy plant growth for personal gardens with AI assistance along the way!
 
 ![Screenshot of Home](./public/assets/Smart-Garden.png)
 
