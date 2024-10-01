@@ -5,7 +5,12 @@
   "cacheDirectories": [
     ".next/cache"
   ],
+  "resolutions": {
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "dev": "next dev",
     "build": "npm install --legacy-peer-deps && next build",
     "start": "next start",
@@ -21,8 +26,8 @@
     "@ionic/react": "^6.0.14",
     "@mui/material": "^5.5.3",
     "next": "12.1.4",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-lazy-load-image-component": "^1.5.3"
   },
   "devDependencies": {
