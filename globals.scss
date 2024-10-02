@@ -242,19 +242,6 @@ button, .btn {
     color: var(--bg) !important;
     background: var(--primaryShadow) !important;
   }
-  &.lightBtn {
-    color: var(--font) !important;
-    background: var(--bg) !important;
-    transition: var(--transition) !important;
-    &:hover {
-      color: var(--primary) !important;
-      background: var(--bg) !important;
-    }
-    &:active {
-      color: var(--primaryShadow) !important;
-      background: var(--bg) !important;
-    }
-  }
 }
 
 aside {
@@ -283,6 +270,78 @@ aside {
   }
 }
 
+.hamburger {
+  display: flex;
+  cursor: pointer;
+  grid-gap: 0.2em;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: var(--transition) !important;
+  span {
+    transition: var(--transition) !important;
+    background: var(--font);
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 4px;
+    height: 4px;
+    width: 20px;
+    &.top {
+      width: 16px;
+    }
+    &.middle {
+      width: 20px;
+      min-width: 20px;
+    }
+    &.bottom {
+      width: 12px;
+    }
+  }
+  &:hover {
+    span {
+      background: var(--primary);
+    }
+  }
+}
+
+.sideMenu {
+  z-index: 1;
+  display: flex;
+  grid-gap: 1.5em;
+  color: var(--font);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  transition: var(--transition);
+  @media (max-width: 992px) {
+    margin-top: -10em;
+    position: relative;
+    margin-right: -1em;
+    left: -30px;
+  }
+  div {
+    cursor: pointer;
+    transition: var(--transition);
+    svg {
+      &:hover {
+        transition: var(--transition);
+        color: var(--primary) !important;
+      }
+    }
+    &:hover {
+      span {
+        transition: var(--transition);
+        background: var(--primary) !important;
+      }
+    }
+  }
+  .search {
+    svg {
+      font-size: 20px;
+      color: var(--font);
+    }
+  }
+}
+
 main {
   padding: var(--sectionPadding);
   position: relative;
@@ -296,64 +355,6 @@ main {
   transition: var(--transition);
   @media (min-width: 992px) {
     background: var(--bg) !important;
-  }
-  .sideMenu {
-    z-index: 1;
-    display: flex;
-    grid-gap: 1.5em;
-    color: var(--font);
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    transition: var(--transition);
-    @media (max-width: 992px) {
-      margin-top: -10em;
-      position: relative;
-      margin-right: -1em;
-      left: -30px;
-    }
-    div {
-      cursor: pointer;
-      transition: var(--transition);
-      svg {
-        &:hover {
-          transition: var(--transition);
-          color: var(--primary) !important;
-        }
-      }
-      &:hover {
-        span {
-          transition: var(--transition);
-          background: var(--primary) !important;
-        }
-      }
-    }
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      grid-gap: 0.2em;
-      span {
-        margin: 0 !important;
-        padding: 0 !important;
-        border-radius: 4px;
-        height: 4px;
-        width: 20px;
-        background: var(--font);
-        &.top {
-          width: 16px;
-        }
-        &.bottom {
-          width: 12px;
-        }
-      }
-    }
-    .search {
-      svg {
-        font-size: 20px;
-        color: var(--font);
-      }
-    }
   }
   .innerMain {
     width: 100%;
@@ -454,12 +455,6 @@ main {
     justify-content: center;
     transition: var(--transition);
     border-bottom-right-radius: 25px;
-    &:hover {
-      .arrow {
-        background: var(--primary) !important;
-        color: var(--bg) !important;
-      }
-    }
     .innerExplore {
       position: relative;
       .arrow {
@@ -467,7 +462,7 @@ main {
         bottom: -75px;
         right: -52px;
         border-radius: 100px !important;
-        background: var(--bg);
+        background: var(--bg) !important;
         padding: 0 !important;
         max-width: 30px !important;
         max-height: 30px !important;
@@ -479,6 +474,10 @@ main {
         align-items: center;
         justify-content: center;
         transition: var(--transition);
+        &:hover {
+          color: var(--bg) !important;
+          background: var(--primary) !important;
+        }
       }
       p {
         color: var(--bg);
@@ -762,15 +761,14 @@ div[role="presentation"] {
     display: flex;
     font-size: 16px;
     grid-gap: 0.65em;
-    flex-direction: column;
-    align-items: flex-start;
-    // padding: 1em 1em 2em 2em;
+    align-items: center;
+    justify-content: space-between;
     animation: fadeIn 1s ease-in-out;
     a {
-      font-size: 16px !important;
+      font-weight: 700;
       color: var(--font);
       font-family: "Nunito";
-      font-weight: 700;
+      font-size: 16px !important;
       svg {
         color: var(--primary);
       }
@@ -868,4 +866,5 @@ a[title="Home"] {
 }
 
 @import 'public/styles/mui';
+@import 'public/styles/nav';
 @import 'public/styles/plants';

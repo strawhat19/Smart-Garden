@@ -1,52 +1,21 @@
+import Nav from "./nav";
+import Menu from "./menu";
 import Link from "next/link";
-import { useContext, useState } from "react";
-import { Button, Tooltip } from "@mui/material";
-import { LazyLoadImage, scrollBottom } from "../functions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import { LazyLoadImage } from "../functions";
 import { brandName, logoURL, sharedDatabase } from "../shared/shared";
-import { faPlantWilt, faUser } from "@fortawesome/free-solid-svg-icons";
-
-export const navOptions = {
-    plants: {
-        id: `plantsBtn`,
-        className: `btn`,
-        title: `Plants`,
-        icon: faPlantWilt,
-        href: `/plants`,
-    },
-    signin: {
-        id: `signinBtn`,
-        className: `btn regBtn lightBtn`,
-        title: `Sign In`,
-        icon: faUser,
-    },
-    signup: {
-        id: `signupBtn`,
-        className: `btn regBtn`,
-        title: `Sign Up`,
-        icon: faUser,
-    },
-}
 
 export default function Header() {
-    let { scrolled, setForm } = useContext<any>(sharedDatabase);
-
-    const [navItems,] = useState<any>(Object.values(navOptions));
-
-    const onRegButtonClick = (e: any, id: any) => {
-        if (id == navOptions.signin.id) setForm(`signin`);
-        else setForm(`signup`);
-        scrollBottom();
-    }
+    let { width, scrolled } = useContext<any>(sharedDatabase);
 
     return (
         <header className={`header ${scrolled ? `scrolledHeader` : `nonscrolledHeader`}`}>
-            <nav className={`navigation innerHeader`}>
+            <div className={`innerHeader`}>
                 {/* Home Link */}
-                <Tooltip title={brandName} arrow>
-                    <div className={`tooltipElement`}>
+                {/* <Tooltip title={brandName} arrow> */}
+                    {/* <div className={`tooltipElement`}> */}
                         <Link href={`/`}>
-                            <a className={`homeHoverLink hoverLink`}>
+                            <a className={`homeHoverLink`}>
                                 <LazyLoadImage 
                                     id={`logo`} 
                                     alt={`logo`} 
@@ -59,40 +28,11 @@ export default function Header() {
                                 {brandName}
                             </a>
                         </Link>
-                    </div>
-                </Tooltip>
+                    {/* </div> */}
+                {/* </Tooltip> */}
                 {/* Nav Menu */}
-                <div className={`navButtons buttons`}>
-                    {navItems.map((navItem: any, nIdx: any) => {
-                        let { id, title, className, icon } = navItem;
-                        return (
-                            navItem.href ? (
-                                <Tooltip key={nIdx} title={title} arrow>
-                                    <div className={`tooltipElement`}>
-                                        <Link href={navItem.href}>
-                                            <a className={className}>
-                                                <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
-                                                {title}
-                                            </a>
-                                        </Link>
-                                    </div>
-                                </Tooltip>
-                            ) : (
-                                <Tooltip key={nIdx} title={title} arrow>
-                                    <Button 
-                                        id={id} 
-                                        className={className} 
-                                        onClick={(e) => className.includes(`regBtn`) ? onRegButtonClick(e, id) : undefined}
-                                    >
-                                        <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
-                                        {title}
-                                    </Button>
-                                </Tooltip>
-                            )
-                        )
-                    })}
-                </div>
-            </nav>
+                {width > 1080 ? <Nav /> : <Menu style={{ marginRight: 15 }} />}
+            </div>
         </header>
     )
 }

@@ -1,12 +1,10 @@
 import Main from "../components/main";
 import Page from "../components/page";
 import Section from "../components/section";
-// import { LazyLoadImage } from "../functions";
 import { useContext, useEffect } from "react";
 import { Plant } from "../shared/types/plants";
 import { logoURL, sharedDatabase } from "../shared/shared";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Image from "next/image";
 
 export default function Plants() {
   let { plants, setPlants } = useContext<any>(sharedDatabase);
