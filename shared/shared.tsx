@@ -11,8 +11,8 @@ export const description = `A tool to help healthy plant growth for personal gar
 export const sharedDatabase = createContext<any>({});
 
 export default function SharedData({ children }: any) {
-    const [width, setWidth] = useState<any>(0);
-    const [height, setHeight] = useState<any>(0);
+    const [width, setWidth] = useState<any>(window.innerWidth);
+    const [height, setHeight] = useState<any>(window.innerHeight);
     const [user, setUser] = useState<any>(guest);
     const [show, setShow] = useState<any>(false);
     const [open, setOpen] = useState<any>(false);
