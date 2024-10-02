@@ -25,7 +25,7 @@ export default function Signin() {
                 </div>
                 <div id="passwordInputSigninItem" className="inputItem">
                   <IonLabel>Password</IonLabel>
-                  <input type="password" id="passwordInputSignin" />
+                  <input type="password" id="passwordInputSignin" autoComplete="password" />
                 </div>
                 <Button id="signinBtn" className="btn regBtn inputItem" title='Signin'>Sign In</Button>
               </form>

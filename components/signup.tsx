@@ -25,7 +25,7 @@ export default function Signup() {
                 </div>
                 <div id="passwordInputSignupItem" className="inputItem">
                   <IonLabel>Password</IonLabel>
-                  <input type="password" id="passwordInputSignup" />
+                  <input type="password" id="passwordInputSignup" autoComplete="password" />
                 </div>
                 <Button id="signupBtn" className="btn regBtn inputItem" title='Signup'>Sign Up</Button>
               </form>
