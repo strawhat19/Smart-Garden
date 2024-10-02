@@ -1,17 +1,26 @@
-export const samplePlants = [
+import { Plant } from "../shared/types/plants";
+
+export const samplePlants: Plant[] = [
     {
         "id": 77116,
-        "common_name": "Evergreen oak",
+        "genus_id": 3519,
+        "rank": "species",
+        "genus": "Quercus",
+        "family": "Fagaceae",
+        "status": "accepted",
+        "author": "Lam.",
+        "family_name": null,
+        "name": "Evergreen Oak",
+        "discovered_year": 1785,
         "slug": "quercus-rotundifolia",
         "scientific_name": "Quercus rotundifolia",
-        "year": 1785,
         "bibliography": "Encycl. 1: 723 (1785)",
-        "author": "Lam.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 3519,
-        "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/40ab8e7cdddbe3e78a581b84efa4e893.jpg",
+        "image": "https://d2seqvvyy3b8p2.cloudfront.net/40ab8e7cdddbe3e78a581b84efa4e893.jpg",
+        "links": {
+            "self": "/api/v1/species/quercus-rotundifolia",
+            "plant": "/api/v1/plants/quercus-rotundifolia",
+            "genus": "/api/v1/genus/quercus"
+        },
         "synonyms": [
             "Quercus ilex var. oleoides",
             "Quercus ilex subvar. rotundifolia",
@@ -49,54 +58,54 @@ export const samplePlants = [
             "Quercus rotundifolia var. pilosella",
             "Quercus rotundifolia var. brevicupulata",
             "Quercus rotundifolia subsp. maghrebiana"
-        ],
-        "genus": "Quercus",
-        "family": "Fagaceae",
-        "links": {
-            "self": "/api/v1/species/quercus-rotundifolia",
-            "plant": "/api/v1/plants/quercus-rotundifolia",
-            "genus": "/api/v1/genus/quercus"
-        }
+        ]
     },
     {
         "id": 109482,
-        "common_name": "Common nettle",
-        "slug": "urtica-dioica",
-        "scientific_name": "Urtica dioica",
-        "year": 1753,
-        "bibliography": "Sp. Pl.: 984 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
         "genus_id": 5550,
-        "image_url": "https://bs.plantnet.org/image/o/9db58cbb3538a6b77384f972971d51869228e545",
-        "synonyms": [
-            "Urtica dioica var. vulgaris",
-            "Urtica dioica var. ramosa",
-            "Urtica dioica subsp. eudioica"
-        ],
+        "rank": "species",
         "genus": "Urtica",
         "family": "Urticaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Common Nettle",
+        "discovered_year": 1753,
+        "slug": "urtica-dioica",
+        "scientific_name": "Urtica dioica",
+        "bibliography": "Sp. Pl.: 984 (1753)",
+        "image": "https://bs.plantnet.org/image/o/9db58cbb3538a6b77384f972971d51869228e545",
         "links": {
             "self": "/api/v1/species/urtica-dioica",
             "plant": "/api/v1/plants/urtica-dioica",
             "genus": "/api/v1/genus/urtica"
-        }
+        },
+        "synonyms": [
+            "Urtica dioica var. vulgaris",
+            "Urtica dioica var. ramosa",
+            "Urtica dioica subsp. eudioica"
+        ]
     },
     {
         "id": 227114,
-        "common_name": "Barnyard grass",
+        "genus_id": 10915,
+        "rank": "species",
+        "genus": "Dactylis",
+        "family": "Poaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Barnyard Grass",
+        "discovered_year": 1753,
         "slug": "dactylis-glomerata",
         "scientific_name": "Dactylis glomerata",
-        "year": 1753,
         "bibliography": "Sp. Pl.: 71 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 10915,
-        "image_url": "https://bs.plantnet.org/image/o/f84a7d4fc2e627ccd451f568479b1932c2b2d900",
+        "image": "https://bs.plantnet.org/image/o/f84a7d4fc2e627ccd451f568479b1932c2b2d900",
+        "links": {
+            "self": "/api/v1/species/dactylis-glomerata",
+            "plant": "/api/v1/plants/dactylis-glomerata",
+            "genus": "/api/v1/genus/dactylis"
+        },
         "synonyms": [
             "Bromus glomeratus",
             "Koeleria dactylis",
@@ -104,28 +113,28 @@ export const samplePlants = [
             "Trachypoa vulgaris",
             "Phalaris glomerata",
             "Limnetis glomerata"
-        ],
-        "genus": "Dactylis",
-        "family": "Poaceae",
-        "links": {
-            "self": "/api/v1/species/dactylis-glomerata",
-            "plant": "/api/v1/plants/dactylis-glomerata",
-            "genus": "/api/v1/genus/dactylis"
-        }
+        ]
     },
     {
         "id": 128860,
-        "common_name": "Narrow-leaf plantain",
+        "genus_id": 6597,
+        "rank": "species",
+        "genus": "Plantago",
+        "family": "Plantaginaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Narrow-leaf Plantain",
+        "discovered_year": 1753,
         "slug": "plantago-lanceolata",
         "scientific_name": "Plantago lanceolata",
-        "year": 1753,
         "bibliography": "Sp. Pl.: 113 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 6597,
-        "image_url": "https://bs.plantnet.org/image/o/f8d7d6fe52e36d04f5ad1fc03f46f604d5c3cc43",
+        "image": "https://bs.plantnet.org/image/o/f8d7d6fe52e36d04f5ad1fc03f46f604d5c3cc43",
+        "links": {
+            "self": "/api/v1/species/plantago-lanceolata",
+            "plant": "/api/v1/plants/plantago-lanceolata",
+            "genus": "/api/v1/genus/plantago"
+        },
         "synonyms": [
             "Plantago intermedia",
             "Plantago lanceolata var. communis",
@@ -218,28 +227,28 @@ export const samplePlants = [
             "Plantago lanceolata subsp. altissima",
             "Plantago longiscapa",
             "Plantago lanceolata var. lanuginosa"
-        ],
-        "genus": "Plantago",
-        "family": "Plantaginaceae",
-        "links": {
-            "self": "/api/v1/species/plantago-lanceolata",
-            "plant": "/api/v1/plants/plantago-lanceolata",
-            "genus": "/api/v1/genus/plantago"
-        }
+        ]
     },
     {
         "id": 11971,
-        "common_name": "Milfoil",
+        "genus_id": 250,
+        "rank": "species",
+        "genus": "Achillea",
+        "family": "Asteraceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": "Aster family",
+        "name": "Milfoil",
+        "discovered_year": 1753,
         "slug": "achillea-millefolium",
         "scientific_name": "Achillea millefolium",
-        "year": 1753,
         "bibliography": "Sp. Pl.: 899 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": "Aster family",
-        "genus_id": 250,
-        "image_url": "https://bs.plantnet.org/image/o/d788a757cd8bac8c3b1378a970c078a7a937a174",
+        "image": "https://bs.plantnet.org/image/o/d788a757cd8bac8c3b1378a970c078a7a937a174",
+        "links": {
+            "self": "/api/v1/species/achillea-millefolium",
+            "plant": "/api/v1/plants/achillea-millefolium",
+            "genus": "/api/v1/genus/achillea"
+        },
         "synonyms": [
             "Santolina millefolium",
             "Achillea millefolium var. nobilior",
@@ -248,53 +257,53 @@ export const samplePlants = [
             "Achillea millefolium f. perrubriflora",
             "Chamaemelum millefolium",
             "Achillea tanacetifolia var. dentifera"
-        ],
-        "genus": "Achillea",
-        "family": "Asteraceae",
-        "links": {
-            "self": "/api/v1/species/achillea-millefolium",
-            "plant": "/api/v1/plants/achillea-millefolium",
-            "genus": "/api/v1/genus/achillea"
-        }
+        ]
     },
     {
         "id": 51662,
-        "common_name": "Dutch clover",
-        "slug": "trifolium-repens",
-        "scientific_name": "Trifolium repens",
-        "year": 1753,
-        "bibliography": "Sp. Pl.: 767 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
         "genus_id": 1872,
-        "image_url": "https://bs.plantnet.org/image/o/170ca6a6020d9e9f95f86112577aeabcb23f5b96",
-        "synonyms": [
-            "Trifolium repens var. maculatum",
-            "Amoria repens"
-        ],
+        "rank": "species",
         "genus": "Trifolium",
         "family": "Fabaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Dutch Clover",
+        "discovered_year": 1753,
+        "slug": "trifolium-repens",
+        "scientific_name": "Trifolium repens",
+        "bibliography": "Sp. Pl.: 767 (1753)",
+        "image": "https://bs.plantnet.org/image/o/170ca6a6020d9e9f95f86112577aeabcb23f5b96",
         "links": {
             "self": "/api/v1/species/trifolium-repens",
             "plant": "/api/v1/plants/trifolium-repens",
             "genus": "/api/v1/genus/trifolium"
-        }
+        },
+        "synonyms": [
+            "Trifolium repens var. maculatum",
+            "Amoria repens"
+        ]
     },
     {
         "id": 230202,
-        "common_name": "Yorkshire-fog",
+        "genus_id": 11051,
+        "rank": "species",
+        "genus": "Holcus",
+        "family": "Poaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Yorkshire-fog",
+        "discovered_year": 1753,
         "slug": "holcus-lanatus",
         "scientific_name": "Holcus lanatus",
-        "year": 1753,
         "bibliography": "Sp. Pl.: 1048 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 11051,
-        "image_url": "https://bs.plantnet.org/image/o/c0800816e2f56ed6e7702c31efd91afcdfddd68c",
+        "image": "https://bs.plantnet.org/image/o/c0800816e2f56ed6e7702c31efd91afcdfddd68c",
+        "links": {
+            "self": "/api/v1/species/holcus-lanatus",
+            "plant": "/api/v1/plants/holcus-lanatus",
+            "genus": "/api/v1/genus/holcus"
+        },
         "synonyms": [
             "Holcus lanatus var. scaber",
             "Holcus lanatus subsp. argenteus",
@@ -333,28 +342,28 @@ export const samplePlants = [
             "Holcus intermedius",
             "Holcus lanatus f. viviparus",
             "Notholcus lanatus"
-        ],
-        "genus": "Holcus",
-        "family": "Poaceae",
-        "links": {
-            "self": "/api/v1/species/holcus-lanatus",
-            "plant": "/api/v1/plants/holcus-lanatus",
-            "genus": "/api/v1/genus/holcus"
-        }
+        ]
     },
     {
         "id": 122042,
-        "common_name": "Creeping buttercup",
+        "genus_id": 6311,
+        "rank": "species",
+        "genus": "Ranunculus",
+        "family": "Ranunculaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Creeping Buttercup",
+        "discovered_year": 1753,
         "slug": "ranunculus-repens",
         "scientific_name": "Ranunculus repens",
-        "year": 1753,
         "bibliography": "Sp. Pl.: 554 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 6311,
-        "image_url": "https://bs.plantnet.org/image/o/90746f2a4592ed4dbc6a166234f488654565605e",
+        "image": "https://bs.plantnet.org/image/o/90746f2a4592ed4dbc6a166234f488654565605e",
+        "links": {
+            "self": "/api/v1/species/ranunculus-repens",
+            "plant": "/api/v1/plants/ranunculus-repens",
+            "genus": "/api/v1/genus/ranunculus"
+        },
         "synonyms": [
             "Ranunculus tomentosus",
             "Ranunculus repens var. prostratus",
@@ -398,56 +407,56 @@ export const samplePlants = [
             "Ranunculus prostratus",
             "Ranunculus lagascanus",
             "Ranunculus repens var. lucidus"
-        ],
-        "genus": "Ranunculus",
-        "family": "Ranunculaceae",
-        "links": {
-            "self": "/api/v1/species/ranunculus-repens",
-            "plant": "/api/v1/plants/ranunculus-repens",
-            "genus": "/api/v1/genus/ranunculus"
-        }
+        ]
     },
     {
         "id": 77107,
-        "common_name": "Pedunculate oak",
+        "genus_id": 3519,
+        "rank": "species",
+        "genus": "Quercus",
+        "family": "Fagaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Pedunculate Oak",
+        "discovered_year": 1753,
         "slug": "quercus-robur",
         "scientific_name": "Quercus robur",
-        "year": 1753,
         "bibliography": "Sp. Pl.: 996 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 3519,
-        "image_url": "https://bs.plantnet.org/image/o/0d16977470dfdcd37d495a5b33c2f343224ebe98",
+        "image": "https://bs.plantnet.org/image/o/0d16977470dfdcd37d495a5b33c2f343224ebe98",
+        "links": {
+            "self": "/api/v1/species/quercus-robur",
+            "plant": "/api/v1/plants/quercus-robur",
+            "genus": "/api/v1/genus/quercus"
+        },
         "synonyms": [
             "Quercus robur var. vulgaris",
             "Quercus robur subsp. eurobur",
             "Quercus robur var. typica",
             "Quercus longaeva",
             "Quercus robur subsp. longipeduncula"
-        ],
-        "genus": "Quercus",
-        "family": "Fagaceae",
-        "links": {
-            "self": "/api/v1/species/quercus-robur",
-            "plant": "/api/v1/plants/quercus-robur",
-            "genus": "/api/v1/genus/quercus"
-        }
+        ]
     },
     {
         "id": 229588,
-        "common_name": "Red fescue",
+        "genus_id": 10999,
+        "rank": "species",
+        "genus": "Festuca",
+        "family": "Poaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Red Fescue",
+        "discovered_year": 1753,
         "slug": "festuca-rubra",
         "scientific_name": "Festuca rubra",
-        "year": 1753,
         "bibliography": "Sp. pl. 1:74.  1753",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 10999,
-        "image_url": "https://bs.plantnet.org/image/o/fb1967942b880fb7c978ff76741d348a22611b88",
+        "image": "https://bs.plantnet.org/image/o/fb1967942b880fb7c978ff76741d348a22611b88",
+        "links": {
+            "self": "/api/v1/species/festuca-rubra",
+            "plant": "/api/v1/plants/festuca-rubra",
+            "genus": "/api/v1/genus/festuca"
+        },
         "synonyms": [
             "Festuca rubra var. hirta",
             "Festuca rubra subsp. glaucodea",
@@ -654,104 +663,104 @@ export const samplePlants = [
             "Festuca rubra var. latifolia",
             "Festuca rubra var. arenaria",
             "Festuca dumetorum"
-        ],
-        "genus": "Festuca",
-        "family": "Poaceae",
-        "links": {
-            "self": "/api/v1/species/festuca-rubra",
-            "plant": "/api/v1/plants/festuca-rubra",
-            "genus": "/api/v1/genus/festuca"
-        }
+        ]
     },
     {
         "id": 221416,
-        "common_name": "European ash",
-        "slug": "fraxinus-excelsior",
-        "scientific_name": "Fraxinus excelsior",
-        "year": 1753,
-        "bibliography": "Sp. Pl.: 1057 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": "Olive family",
         "genus_id": 10598,
-        "image_url": "https://bs.plantnet.org/image/o/84ef20b0276c3e0a6d32dd97a7b987b510feb961",
-        "synonyms": [
-            "Fraxinus excelsior var. communis"
-        ],
+        "rank": "species",
         "genus": "Fraxinus",
         "family": "Oleaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": "Olive family",
+        "name": "European Ash",
+        "discovered_year": 1753,
+        "slug": "fraxinus-excelsior",
+        "scientific_name": "Fraxinus excelsior",
+        "bibliography": "Sp. Pl.: 1057 (1753)",
+        "image": "https://bs.plantnet.org/image/o/84ef20b0276c3e0a6d32dd97a7b987b510feb961",
         "links": {
             "self": "/api/v1/species/fraxinus-excelsior",
             "plant": "/api/v1/plants/fraxinus-excelsior",
             "genus": "/api/v1/genus/fraxinus"
-        }
+        },
+        "synonyms": [
+            "Fraxinus excelsior var. communis"
+        ]
     },
     {
         "id": 1999,
-        "common_name": "California thistle",
+        "genus_id": 31,
+        "rank": "species",
+        "genus": "Cirsium",
+        "family": "Asteraceae",
+        "status": "accepted",
+        "author": "(L.) Scop.",
+        "family_name": "Aster family",
+        "name": "California Thistle",
+        "discovered_year": 1771,
         "slug": "cirsium-arvense",
         "scientific_name": "Cirsium arvense",
-        "year": 1771,
         "bibliography": "Fl. Carniol., ed. 2, 2: 126 (1771)",
-        "author": "(L.) Scop.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": "Aster family",
-        "genus_id": 31,
-        "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/c7d6d18dfbd69cbf043001fb3204517c.jpg",
+        "image": "https://d2seqvvyy3b8p2.cloudfront.net/c7d6d18dfbd69cbf043001fb3204517c.jpg",
+        "links": {
+            "self": "/api/v1/species/cirsium-arvense",
+            "plant": "/api/v1/plants/cirsium-arvense",
+            "genus": "/api/v1/genus/cirsium"
+        },
         "synonyms": [
             "Cnicus arvensis",
             "Breea arvensis",
             "Cephalonoplos arvensis",
             "Serratula arvensis",
             "Carduus arvensis"
-        ],
-        "genus": "Cirsium",
-        "family": "Asteraceae",
-        "links": {
-            "self": "/api/v1/species/cirsium-arvense",
-            "plant": "/api/v1/plants/cirsium-arvense",
-            "genus": "/api/v1/genus/cirsium"
-        }
+        ]
     },
     {
         "id": 51657,
-        "common_name": "Cowgrass clover",
-        "slug": "trifolium-pratense",
-        "scientific_name": "Trifolium pratense",
-        "year": 1753,
-        "bibliography": "Sp. Pl.: 768 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
         "genus_id": 1872,
-        "image_url": "https://bs.plantnet.org/image/o/3bb52539dcca8b6bf19b9bf752631def901ba64c",
-        "synonyms": [
-            "Lagopus pratensis"
-        ],
+        "rank": "species",
         "genus": "Trifolium",
         "family": "Fabaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Cowgrass Clover",
+        "discovered_year": 1753,
+        "slug": "trifolium-pratense",
+        "scientific_name": "Trifolium pratense",
+        "bibliography": "Sp. Pl.: 768 (1753)",
+        "image": "https://bs.plantnet.org/image/o/3bb52539dcca8b6bf19b9bf752631def901ba64c",
         "links": {
             "self": "/api/v1/species/trifolium-pratense",
             "plant": "/api/v1/plants/trifolium-pratense",
             "genus": "/api/v1/genus/trifolium"
-        }
+        },
+        "synonyms": [
+            "Lagopus pratensis"
+        ]
     },
     {
         "id": 257312,
-        "common_name": "Beech",
+        "genus_id": 11983,
+        "rank": "species",
+        "genus": "Fagus",
+        "family": "Fagaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Beech",
+        "discovered_year": 1753,
         "slug": "fagus-sylvatica",
         "scientific_name": "Fagus sylvatica",
-        "year": 1753,
         "bibliography": "Sp. Pl.: 998 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 11983,
-        "image_url": "https://bs.plantnet.org/image/o/a733221df31a1ff99af03566841744f3b4c6cffe",
+        "image": "https://bs.plantnet.org/image/o/a733221df31a1ff99af03566841744f3b4c6cffe",
+        "links": {
+            "self": "/api/v1/species/fagus-sylvatica",
+            "plant": "/api/v1/plants/fagus-sylvatica",
+            "genus": "/api/v1/genus/fagus"
+        },
         "synonyms": [
             "Fagus sylvatica var. atropunicea",
             "Fagus sylvestris",
@@ -826,28 +835,28 @@ export const samplePlants = [
             "Fagus sylvatica var. cochleata",
             "Fagus sylvatica purpurea-latifolia",
             "Fagus comptoniifolia"
-        ],
-        "genus": "Fagus",
-        "family": "Fagaceae",
-        "links": {
-            "self": "/api/v1/species/fagus-sylvatica",
-            "plant": "/api/v1/plants/fagus-sylvatica",
-            "genus": "/api/v1/genus/fagus"
-        }
+        ]
     },
     {
         "id": 208738,
-        "common_name": "Soft rush",
+        "genus_id": 6140,
+        "rank": "species",
+        "genus": "Juncus",
+        "family": "Juncaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Soft Rush",
+        "discovered_year": 1753,
         "slug": "juncus-effusus",
         "scientific_name": "Juncus effusus",
-        "year": 1753,
         "bibliography": "Sp. Pl.: 326 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 6140,
-        "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/31545c7b5c65236a5d7f28ca040ee058.jpg",
+        "image": "https://d2seqvvyy3b8p2.cloudfront.net/31545c7b5c65236a5d7f28ca040ee058.jpg",
+        "links": {
+            "self": "/api/v1/species/juncus-effusus",
+            "plant": "/api/v1/plants/juncus-effusus",
+            "genus": "/api/v1/genus/juncus"
+        },
         "synonyms": [
             "Juncus laevis var. effusus",
             "Juncus effusus var. oblongicarpus",
@@ -855,52 +864,52 @@ export const samplePlants = [
             "Juncus communis var. effusus",
             "Juncus conglomeratus var. effusus",
             "Juncus laevis"
-        ],
-        "genus": "Juncus",
-        "family": "Juncaceae",
-        "links": {
-            "self": "/api/v1/species/juncus-effusus",
-            "plant": "/api/v1/plants/juncus-effusus",
-            "genus": "/api/v1/genus/juncus"
-        }
+        ]
     },
     {
         "id": 121255,
-        "common_name": "Meadow buttercup",
-        "slug": "ranunculus-acris",
-        "scientific_name": "Ranunculus acris",
-        "year": 1753,
-        "bibliography": "Sp. Pl.: 554 (1753)",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
         "genus_id": 6311,
-        "image_url": "https://bs.plantnet.org/image/o/43c58aa2ef3d5a11ac1dd83d9b465e639338a3da",
-        "synonyms": [
-            "Ranunculastrum acre"
-        ],
+        "rank": "species",
         "genus": "Ranunculus",
         "family": "Ranunculaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Meadow Buttercup",
+        "discovered_year": 1753,
+        "slug": "ranunculus-acris",
+        "scientific_name": "Ranunculus acris",
+        "bibliography": "Sp. Pl.: 554 (1753)",
+        "image": "https://bs.plantnet.org/image/o/43c58aa2ef3d5a11ac1dd83d9b465e639338a3da",
         "links": {
             "self": "/api/v1/species/ranunculus-acris",
             "plant": "/api/v1/plants/ranunculus-acris",
             "genus": "/api/v1/genus/ranunculus"
-        }
+        },
+        "synonyms": [
+            "Ranunculastrum acre"
+        ]
     },
     {
         "id": 265334,
-        "common_name": "Hawthorn",
+        "genus_id": 12152,
+        "rank": "species",
+        "genus": "Crataegus",
+        "family": "Rosaceae",
+        "status": "accepted",
+        "author": "Jacq.",
+        "family_name": "Rose family",
+        "name": "Hawthorn",
+        "discovered_year": 1775,
         "slug": "crataegus-monogyna",
         "scientific_name": "Crataegus monogyna",
-        "year": 1775,
         "bibliography": "Fl. Austriac. 3: 50 (1775)",
-        "author": "Jacq.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": "Rose family",
-        "genus_id": 12152,
-        "image_url": "https://bs.plantnet.org/image/o/9a428f47e57e087f677d58967659592f8232c737",
+        "image": "https://bs.plantnet.org/image/o/9a428f47e57e087f677d58967659592f8232c737",
+        "links": {
+            "self": "/api/v1/species/crataegus-monogyna",
+            "plant": "/api/v1/plants/crataegus-monogyna",
+            "genus": "/api/v1/genus/crataegus"
+        },
         "synonyms": [
             "Crataegus parvifolia",
             "Crataegus oxyacantha var. laciniata",
@@ -1243,55 +1252,55 @@ export const samplePlants = [
             "Crataegus monogyna var. microphylla",
             "Crataegus oxyacantha var. praecox",
             "Crataegus oxyacantha subsp. monogyna"
-        ],
-        "genus": "Crataegus",
-        "family": "Rosaceae",
-        "links": {
-            "self": "/api/v1/species/crataegus-monogyna",
-            "plant": "/api/v1/plants/crataegus-monogyna",
-            "genus": "/api/v1/genus/crataegus"
-        }
+        ]
     },
     {
         "id": 106738,
-        "common_name": "Garden sorrel",
+        "genus_id": 5298,
+        "rank": "species",
+        "genus": "Rumex",
+        "family": "Polygonaceae",
+        "status": "accepted",
+        "author": "L.",
+        "family_name": null,
+        "name": "Garden Sorrel",
+        "discovered_year": 1753,
         "slug": "rumex-acetosa",
         "scientific_name": "Rumex acetosa",
-        "year": 1753,
         "bibliography": "Sp. pl. 1:337.  1753, nom. cons.",
-        "author": "L.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 5298,
-        "image_url": "https://bs.plantnet.org/image/o/b07ad83adb571370a40982de0ec45248871486d6",
+        "image": "https://bs.plantnet.org/image/o/b07ad83adb571370a40982de0ec45248871486d6",
+        "links": {
+            "self": "/api/v1/species/rumex-acetosa",
+            "plant": "/api/v1/plants/rumex-acetosa",
+            "genus": "/api/v1/genus/rumex"
+        },
         "synonyms": [
             "Rumex acetosa var. pratensis",
             "Rumex acidus",
             "Lapathum acetosa",
             "Rumex acetosa subsp. pratensis"
-        ],
-        "genus": "Rumex",
-        "family": "Polygonaceae",
-        "links": {
-            "self": "/api/v1/species/rumex-acetosa",
-            "plant": "/api/v1/plants/rumex-acetosa",
-            "genus": "/api/v1/genus/rumex"
-        }
+        ]
     },
     {
         "id": 155762,
-        "common_name": "Heather",
+        "genus_id": 8012,
+        "rank": "species",
+        "genus": "Calluna",
+        "family": "Ericaceae",
+        "status": "accepted",
+        "author": "(L.) Hull",
+        "family_name": null,
+        "name": "Heather",
+        "discovered_year": 1808,
         "slug": "calluna-vulgaris",
         "scientific_name": "Calluna vulgaris",
-        "year": 1808,
         "bibliography": "Brit. Fl., ed. 2, 1: 114 (1808)",
-        "author": "(L.) Hull",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": null,
-        "genus_id": 8012,
-        "image_url": "https://d2seqvvyy3b8p2.cloudfront.net/04a6d1e14c82502b58222574e2a99cde.jpg",
+        "image": "https://d2seqvvyy3b8p2.cloudfront.net/04a6d1e14c82502b58222574e2a99cde.jpg",
+        "links": {
+            "self": "/api/v1/species/calluna-vulgaris",
+            "plant": "/api/v1/plants/calluna-vulgaris",
+            "genus": "/api/v1/genus/calluna"
+        },
         "synonyms": [
             "Calluna vulgaris var. patula",
             "Calluna vulgaris var. hammondii",
@@ -1397,41 +1406,34 @@ export const samplePlants = [
             "Erica sagittifolia",
             "Calluna vulgaris f. compressa",
             "Calluna vulgaris f. multicolor"
-        ],
-        "genus": "Calluna",
-        "family": "Ericaceae",
-        "links": {
-            "self": "/api/v1/species/calluna-vulgaris",
-            "plant": "/api/v1/plants/calluna-vulgaris",
-            "genus": "/api/v1/genus/calluna"
-        }
+        ]
     },
     {
         "id": 262017,
-        "common_name": "Meadowsweet",
+        "genus_id": 12148,
+        "rank": "species",
+        "genus": "Filipendula",
+        "family": "Rosaceae",
+        "status": "accepted",
+        "author": "(L.) Maxim.",
+        "family_name": "Rose family",
+        "name": "Meadowsweet",
+        "discovered_year": 1879,
         "slug": "filipendula-ulmaria",
         "scientific_name": "Filipendula ulmaria",
-        "year": 1879,
         "bibliography": "Trudy Imp. S.-Peterburgsk. Bot. Sada 6: 251 (1879)",
-        "author": "(L.) Maxim.",
-        "status": "accepted",
-        "rank": "species",
-        "family_common_name": "Rose family",
-        "genus_id": 12148,
-        "image_url": "https://bs.plantnet.org/image/o/53c73903dc455a3d734b193dad7d9d8c4ec0e324",
+        "image": "https://bs.plantnet.org/image/o/53c73903dc455a3d734b193dad7d9d8c4ec0e324",
+        "links": {
+            "self": "/api/v1/species/filipendula-ulmaria",
+            "plant": "/api/v1/plants/filipendula-ulmaria",
+            "genus": "/api/v1/genus/filipendula"
+        },
         "synonyms": [
             "Ulmaria ulmaria",
             "Thecanisia ulmaria",
             "Spiraea ulmaria",
             "Spiraea ulmaria f. tomentosa",
             "Spiraea ulmaria var. tomentosa"
-        ],
-        "genus": "Filipendula",
-        "family": "Rosaceae",
-        "links": {
-            "self": "/api/v1/species/filipendula-ulmaria",
-            "plant": "/api/v1/plants/filipendula-ulmaria",
-            "genus": "/api/v1/genus/filipendula"
-        }
+        ]
     }
 ]

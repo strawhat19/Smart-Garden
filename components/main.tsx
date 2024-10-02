@@ -13,7 +13,7 @@ export default function Main({ title, desc, children, className = `mainComponent
             <Banner title={title} desc={desc} />
             <Explore />
         </main>
-        <article>
+        <article style={{ position: `relative`, zIndex: 10 }}>
             {children}
         </article>
     </>

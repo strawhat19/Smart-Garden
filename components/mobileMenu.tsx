@@ -1,18 +1,26 @@
 import Link from "next/link";
 import { Button } from "@mui/material";
-import { logoURL } from "../shared/shared";
 import { LazyLoadImage } from "../functions";
+import { brandName, logoURL } from "../shared/shared";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut, faHouseChimneyUser, faUserTie, faCopyright, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 
 export default function MobileMenu() {
     return (
-        <div className="menu">
-            <div className="innerMenu">
+        <div className={`menu`}>
+            <div className={`innerMenu`}>
                 <Link href={`/`}>
-                    <a title="Home">
-                        <LazyLoadImage effect="blur" src={logoURL} id={`logo`} className="logo" alt={`logo`} width={`100%`} height={`auto`} />
-                        Next.js
+                    <a title={`Home`}>
+                        <LazyLoadImage 
+                            alt={`logo`} 
+                            src={logoURL} 
+                            width={`100%`}
+                            effect={`blur`} 
+                            height={`auto`} 
+                            id={`menuLogo`} 
+                            className={`logo`} 
+                        />
+                        {brandName.split(` `)[0]} {brandName.split(` `)[1]}
                     </a>
                 </Link>
                 <div className="navigation-tab firstLink">

@@ -1,16 +1,12 @@
+import { useContext } from "react";
 import { Button } from "@mui/material";
-import{useState, useEffect} from "react";
 import { scrollTop } from "../functions";
+import { sharedDatabase } from "../shared/shared";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function TopButton() {
-    const [show, setShow] = useState<any>(false);
-
-    useEffect(() => {
-        window.addEventListener(`scroll`, (event) => window.scrollY > 50 ? setShow(true) : setShow(false));    
-        return () => window.removeEventListener(`scroll`, (event) => window.scrollY > 50 ? setShow(true) : setShow(false));
-    }, [setShow])
+    let { show } = useContext<any>(sharedDatabase);
 
     return (
         <div className={`topButtonComponent`}>

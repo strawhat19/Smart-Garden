@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { appContext } from "../pages";
-import { LazyLoadImage } from "../functions";
+import { useContext, useState } from "react";
 import { Button, Tooltip } from "@mui/material";
-import { brandName, logoURL } from "../shared/shared";
-import { useContext, useEffect, useState } from "react";
+import { LazyLoadImage, scrollBottom } from "../functions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { brandName, logoURL, sharedDatabase } from "../shared/shared";
 import { faPlantWilt, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const navOptions = {
@@ -30,21 +29,15 @@ export const navOptions = {
 }
 
 export default function Header() {
-    let { setForm } = useContext<any>(appContext);
+    let { scrolled, setForm } = useContext<any>(sharedDatabase);
 
-    const [scrolled, setScrolled] = useState<any>(false);
     const [navItems,] = useState<any>(Object.values(navOptions));
 
     const onRegButtonClick = (e: any, id: any) => {
         if (id == navOptions.signin.id) setForm(`signin`);
         else setForm(`signup`);
-        document.body.scrollTop = 1250;
-        document.documentElement.scrollTop = 1250;
+        scrollBottom();
     }
-
-    useEffect(() => {
-        window.addEventListener('scroll', (event?: any) => window.scrollY > 5 ? setScrolled(true) : setScrolled(false));
-    }, [setScrolled]);
 
     return (
         <header className={`header ${scrolled ? `scrolledHeader` : `nonscrolledHeader`}`}>
