@@ -1,17 +1,18 @@
 export class Role {
-    id: any;
     name: any;
-    role: any;
     level: number;
-    constructor(role: string, level: number) {
-        this.role = role;
-        this.name = role;
-        this.level = level;
-        this.id = `${level}_${role}`;
+    constructor(level: number, role: string) {
+      this.name = role;
+      this.level = level;
     }
 }
-
-export const roles = [`Guest`, `Subscriber`, `Editor`, `Moderator`, `Administrator`, `Developer`, `Owner`];
-export const ROLES = roles.map((role, roleIndex) => new Role(role, roleIndex + 1));
-
-console.log(`Roles`, ROLES);
+  
+export const ROLES = {
+    Guest: new Role(1, `Guest`),
+    Subscriber: new Role(2, `Subscriber`),
+    Editor: new Role(3, `Editor`),
+    Moderator: new Role(4, `Moderator`),
+    Administrator: new Role(5, `Administrator`),
+    Developer: new Role(6, `Developer`),
+    Owner: new Role(7, `Owner`),
+}
