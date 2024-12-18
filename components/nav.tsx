@@ -1,14 +1,22 @@
 import Link from "next/link";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
+import { anchorPosition } from "./menu";
+import { Themes } from "../shared/enums";
 import { scrollBottom } from "../functions";
 import { useContext, useState } from "react";
 import { guest, sharedDatabase } from "../shared/shared";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightToBracket, faDatabase, faSpa, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { anchorPosition } from "./menu";
+import { faArrowRightToBracket, faDatabase, faMoon, faSpa, faSun, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 export const navOptions = {
+    // theme: {
+    //     id: `themeBtn`,
+    //     className: `btn`,
+    //     title: `Theme`,
+    //     icon: faMoon,
+    //     new: true,
+    // },
     api: {
         id: `apiBtn`,
         className: `btn lightBtn`,
@@ -45,7 +53,7 @@ export const navOptions = {
 export default function Nav({ direction = `row` }: any) {
     const router = useRouter();
     const [navItems,] = useState<any>(Object.values(navOptions));
-    let { user, menu, form, setForm, setMenu } = useContext<any>(sharedDatabase);
+    let { user, menu, form, setForm, setMenu, theme, setTheme } = useContext<any>(sharedDatabase);
 
     const onRegButtonClick = (e: any, id: any) => {
         if (id == navOptions.signin.id) setForm(`signin`);
@@ -85,7 +93,27 @@ export default function Nav({ direction = `row` }: any) {
                                     {title}
                                 </Button>
                             // </Tooltip>
-                        ) : <></>
+                        ) : title == `Theme` ? (
+                            <Button 
+                                id={id} 
+                                key={nIdx}
+                                title={title}
+                                onClick={(e) => setTheme(theme == Themes.light ? Themes.dark : Themes.light)}
+                                className={`navItem navButton themeBtn ${className} ${theme} ${theme == Themes.dark ? `lightBtn` : ``}`} 
+                            >
+                                <FontAwesomeIcon icon={theme == Themes.light ? faMoon : faSun} style={{ paddingRight: 15 }} />
+                            </Button>
+                        ) : (
+                            <Button 
+                                id={id} 
+                                key={nIdx}
+                                onClick={(e) => undefined}
+                                className={`navItem navButton ${className}`} 
+                            >
+                                <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
+                                {title}
+                            </Button>
+                        )
                     )
                 )
             })}

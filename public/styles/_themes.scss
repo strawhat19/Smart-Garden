@@ -1,0 +1,46 @@
+body {
+    .signupBtn {
+        &.active {
+            color: white !important;
+            background: var(--primary) !important;
+            &:hover {
+                background: var(--secondary) !important;
+            }
+        }
+    }
+    &:has(.dark) {
+        .homeHoverLink {
+            --font: white;
+        }
+        background: var(--secondaryVariant);
+        header {
+            background: var(--secondaryVariant);
+            // background: rgba(38, 70, 83, 0.85);
+        }
+        main {
+            background: var(--secondaryVariant) !important;
+            aside, .arrowDown svg path, .search svg path {
+                fill: white !important;
+                color: white !important;
+                stroke: white !important;
+            }
+            .sideMenu .hamburger span {
+                background: white;
+            }
+        }
+        footer {
+            background: var(--secondaryVariant);
+            .sectionEndText, .formLabel, .formElements ion-label {
+                color: white;
+            }
+            .formElements {
+                button {
+                    background: var(--secondary) !important;
+                    &:hover {
+                        background: var(--primary) !important;
+                    }
+                }
+            }
+        }
+    }
+}

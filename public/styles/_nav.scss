@@ -9,6 +9,13 @@
     }
 }
 
+.themeBtn {
+    padding: 0 !important;
+    svg {
+        padding: 0 !important;
+    }
+}
+
 .lightBtn {
     &.arrow {
         color: var(--font) !important;

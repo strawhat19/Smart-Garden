@@ -1,3 +1,4 @@
+import { Themes } from "./enums";
 import { createContext } from "react";
 import { Plant } from "./types/plants";
 import { useState, useEffect } from "react";
@@ -19,6 +20,7 @@ export default function SharedData({ children }: any) {
     const [form, setForm] = useState<any>(`signin`);
     const [menu, setMenu] = useState<any>({left: false});
     const [scrolled, setScrolled] = useState<any>(false);
+    const [theme, setTheme] = useState<any>(Themes.light);
 
     let [plants, setPlants] = useState<Plant[]>(samplePlants?.map((plnt: Plant) => new Plant(plnt)));
 
@@ -40,17 +42,22 @@ export default function SharedData({ children }: any) {
         }
     }, [setWidth, setHeight]);
 
-    return <sharedDatabase.Provider value={{
-        width, 
-        height, 
-        menu, setMenu,
-        open, setOpen,
-        user, setUser,
-        show, setShow,
-        form, setForm,
-        plants, setPlants,
-        scrolled, setScrolled,
-    }}>
-        {children}
-    </sharedDatabase.Provider>
+    return (
+        <sharedDatabase.Provider value={{
+            width, 
+            height, 
+            menu, setMenu,
+            open, setOpen,
+            user, setUser,
+            show, setShow,
+            form, setForm,
+            theme, setTheme,
+            plants, setPlants,
+            scrolled, setScrolled,
+        }}>
+            <div title={brandName} className={`app ${theme} ${brandName.replaceAll(` `, `_`)}`}>
+                {children}
+            </div>
+        </sharedDatabase.Provider>
+    )
 }
