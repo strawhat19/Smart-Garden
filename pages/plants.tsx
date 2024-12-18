@@ -3,8 +3,8 @@ import Page from "../components/page";
 import Section from "../components/section";
 import { useContext, useEffect } from "react";
 import { Plant } from "../shared/types/plants";
+import CustomImage from "../components/customImage";
 import { logoURL, sharedDatabase } from "../shared/shared";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Plants() {
   let { plants, setPlants } = useContext<any>(sharedDatabase);
@@ -45,7 +45,7 @@ export default function Plants() {
             {plants.map((plant: Plant, pIdx: any) => {
               return (
                 <div key={pIdx} className={`plant`}>
-                  <LazyLoadImage 
+                  <CustomImage 
                     height={200} 
                     alt={`Plant`} 
                     width={`100%`}
@@ -54,13 +54,6 @@ export default function Plants() {
                     id={`plantImage-${plant.id}`} 
                     src={plant.image != null ? plant.image : logoURL} 
                   />
-                  {/* <Image
-                    alt={plant.scientific_name}
-                    width={300} // Desired image width
-                    height={200} // Desired image height
-                    src={plant.image != null ? plant.image : logoURL} // The path to your image
-                    placeholder={`blur`} // Optional: add a blur placeholder while the image is loading
-                  /> */}
                   <div className={`plantDataRow`}>
                     <strong title={`Name`} className={`plantName plantTitle`}>{plant.name}</strong>
                     <i title={`Scientific Name`} className={`scientificName subData`}>

@@ -2,11 +2,11 @@ import Nav from "./nav";
 import Link from "next/link";
 import { useContext } from "react";
 import { Button } from "@mui/material";
-import { LazyLoadImage } from "../functions";
+import CustomImage from "./customImage";
+import { anchorPosition } from "./menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brandName, guest, logoURL, sharedDatabase } from "../shared/shared";
 import { faSignOut, faUserTie, faCopyright, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
-import { anchorPosition } from "./menu";
 
 export default function MobileMenu() {
     let { user, menu } = useContext<any>(sharedDatabase);
@@ -16,7 +16,7 @@ export default function MobileMenu() {
             <div className={`innerMenu`}>
                 <Link href={`/`}>
                     <a title={`Home`}>
-                        <LazyLoadImage 
+                        <CustomImage 
                             alt={`logo`} 
                             src={logoURL} 
                             width={`100%`}

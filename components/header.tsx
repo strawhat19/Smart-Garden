@@ -2,7 +2,7 @@ import Nav from "./nav";
 import Menu from "./menu";
 import Link from "next/link";
 import { useContext } from "react";
-import { LazyLoadImage } from "../functions";
+import CustomImage from "./customImage";
 import { brandName, logoURL, sharedDatabase } from "../shared/shared";
 
 export default function Header() {
@@ -16,7 +16,7 @@ export default function Header() {
                     {/* <div className={`tooltipElement`}> */}
                         <Link href={`/`}>
                             <a className={`homeHoverLink`}>
-                                <LazyLoadImage 
+                                <CustomImage 
                                     id={`logo`} 
                                     alt={`logo`} 
                                     src={logoURL} 
