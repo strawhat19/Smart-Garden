@@ -15,7 +15,7 @@ export default function Header() {
                 {/* <Tooltip title={brandName} arrow> */}
                     {/* <div className={`tooltipElement`}> */}
                         <Link href={`/`} passHref={true}>
-                            <div className={`homeHoverLink`}>
+                            <div className={`homeHoverLink`} style={{ display: `flex`, alignItems: `center` }}>
                                 <CustomImage 
                                     id={`logo`} 
                                     alt={`logo`} 

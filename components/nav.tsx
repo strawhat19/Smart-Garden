@@ -9,45 +9,59 @@ import { guest, sharedDatabase } from "../shared/shared";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faDatabase, faMoon, faSpa, faSun, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
+export class NavItem {
+    icon: any;
+    id: string = ``;
+    href: string = ``;
+    title: string = ``;
+    form?: string = ``;
+    new?: boolean = false;
+    auth?: boolean = false;
+    className: string = ``;
+    constructor(data: Partial<NavItem>) {
+        Object.assign(this, data);
+    }
+}
+
 export const navOptions = {
-    // theme: {
-    //     id: `themeBtn`,
-    //     className: `btn`,
-    //     title: `Theme`,
-    //     icon: faMoon,
-    //     new: true,
-    // },
-    api: {
+    theme: new NavItem({
+        id: `themeBtn`,
+        className: `btn`,
+        title: `Theme`,
+        icon: faMoon,
+        new: true,
+    }),
+    api: new NavItem({
         id: `apiBtn`,
         className: `btn lightBtn`,
         title: `API`,
         href: `/api`,
         icon: faDatabase,
         new: true,
-    },
-    plants: {
+    }),
+    plants: new NavItem({
         id: `plantsBtn`,
         className: `btn lightBtn`,
         title: `Plants`,
         href: `/plants`,
         icon: faSpa,
-    },
-    signin: {
+    }),
+    signin: new NavItem({
         id: `signinBtn`,
         className: `btn regBtn signinBtn lightBtn`,
         title: `Sign In`,
         icon: faArrowRightToBracket,
         form: `signin`,
         auth: true,
-    },
-    signup: {
+    }),
+    signup: new NavItem({
         id: `signupBtn`,
         className: `btn regBtn signupBtn`,
         title: `Sign Up`,
         icon: faUserPlus,
         form: `signup`,
         auth: true,
-    },
+    }),
 }
 
 export default function Nav({ direction = `row` }: any) {
@@ -72,7 +86,7 @@ export default function Nav({ direction = `row` }: any) {
                     navItem.href ? (
                         // <Tooltip key={nIdx} title={title} arrow>
                             // <div className={`tooltipElement`}>
-                                <Link key={nIdx} href={navItem.href} target={`_blank`}>
+                                <Link key={nIdx} href={navItem.href} target={navItem.new ? `_blank` : `_self`}>
                                     <div className={`navItem navLink ${className} ${router.pathname === navItem?.href ? `active` : `inactive`}`}>
                                         <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
                                         {title}

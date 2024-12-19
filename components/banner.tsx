@@ -9,10 +9,10 @@ export default function Banner({
         <div className={`innerMain`}>
             <div className={`mainBanner`}>
                 <div className={`textCol`}>
-                    <IonGrid>
-                        <IonRow>
-                            <IonCol size={`1`} id={`mainspacercol`} />
-                            <IonCol class={`mainSpace`}>
+                    <div className={`textContainer`}>
+                        <div className={`textInnerContainer`}>
+                            <div id={`mainspacercol`} />
+                            <div className={`mainSpace`}>
                                 <h1>
                                     {title.split(` `)[0]} 
                                     <span className={`bottomText`}>{title.split(` `)[1]} 
@@ -20,9 +20,9 @@ export default function Banner({
                                     </span>
                                 </h1> 
                                 <p>{desc}</p>
-                            </IonCol>
-                        </IonRow>
-                    </IonGrid>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

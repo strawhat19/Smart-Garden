@@ -11,6 +11,11 @@ body {
     &:has(.dark) {
         .homeHoverLink {
             --font: white;
+            color: white;
+            transition: var(--transition);
+            &:hover {
+                color: var(--primary);
+            }
         }
         background: var(--secondaryVariant);
         header {
