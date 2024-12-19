@@ -14,8 +14,8 @@ export default function MobileMenu() {
     return (
         <div className={`menu ${menu[anchorPosition] == true ? `menuOpen` : `menuClosed`}`}>
             <div className={`innerMenu`}>
-                <Link href={`/`}>
-                    <a title={`Home`}>
+                <Link href={`/`} passHref={true}>
+                    <div title={`Home`}>
                         <CustomImage 
                             alt={`logo`} 
                             src={logoURL} 
@@ -26,7 +26,7 @@ export default function MobileMenu() {
                             className={`logo`} 
                         />
                         {brandName.split(` `)[0]} {brandName.split(` `)[1]}
-                    </a>
+                    </div>
                 </Link>
                 {/* Nav */}
                 <Nav direction={`column`} />
@@ -42,10 +42,10 @@ export default function MobileMenu() {
                 {user != guest ? (
                     <>
                         <div className="navigation-tab">
-                            <Link href={`/profile`}>
-                                <a className="hoverLink" href="./profile" title="Profile">
+                            <Link href={`/profile`} passHref={true}>
+                                <div className="hoverLink" title="Profile">
                                     <FontAwesomeIcon icon={faUserTie} /> Profile
-                                </a>
+                                </div>
                             </Link>
                         </div>
                         <div className="navigation-tab">

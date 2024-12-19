@@ -72,11 +72,11 @@ export default function Nav({ direction = `row` }: any) {
                     navItem.href ? (
                         // <Tooltip key={nIdx} title={title} arrow>
                             // <div className={`tooltipElement`}>
-                                <Link key={nIdx} href={navItem.href}>
-                                    <a className={`navItem navLink ${className} ${router.pathname === navItem?.href ? `active` : `inactive`}`} target={navItem?.new ? `_blank` : `_self`}>
+                                <Link key={nIdx} href={navItem.href} target={`_blank`}>
+                                    <div className={`navItem navLink ${className} ${router.pathname === navItem?.href ? `active` : `inactive`}`}>
                                         <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
                                         {title}
-                                    </a>
+                                    </div>
                                 </Link>
                             // </div>
                         // </Tooltip>

@@ -14,8 +14,8 @@ export default function Header() {
                 {/* Home Link */}
                 {/* <Tooltip title={brandName} arrow> */}
                     {/* <div className={`tooltipElement`}> */}
-                        <Link href={`/`}>
-                            <a className={`homeHoverLink`}>
+                        <Link href={`/`} passHref={true}>
+                            <div className={`homeHoverLink`}>
                                 <CustomImage 
                                     id={`logo`} 
                                     alt={`logo`} 
@@ -26,7 +26,7 @@ export default function Header() {
                                     className={`logo`} 
                                 />
                                 {brandName}
-                            </a>
+                            </div>
                         </Link>
                     {/* </div> */}
                 {/* </Tooltip> */}

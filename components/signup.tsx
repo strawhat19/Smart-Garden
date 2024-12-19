@@ -5,7 +5,6 @@ import { ROLES, User } from '../shared/types/users';
 import { sharedDatabase } from '../shared/shared';
 import { addUser, auth } from '../server/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { IonCol, IonGrid, IonLabel, IonRow } from '../functions';
 
 export default function Signup() {
   let { users } = useContext<any>(sharedDatabase);
@@ -52,28 +51,28 @@ export default function Signup() {
 
   return (
     <div className="form" id="signup">
-      <div className="innerForm">
-        <IonGrid className='formElements'>
-          <IonRow className='formRow'>
-            <IonCol className="formCol">
-              <IonLabel className="formLabel">Sign Up</IonLabel>
+      <div className="innerForm" style={{ width: `57%` }}>
+        <div className='formElements'>
+          <div className='formRow'>
+            <div className="formCol">
+              <div className="formLabel">Sign Up</div>
               <form onSubmit={(e) => onSignUp(e)} id="signupForm" className="signupForm">
                 <div id="emailInputSignupItem" className="inputItem">
-                  <IonLabel>Email</IonLabel>
+                  <div>Email</div>
                   <input type="email" name="email" id="emailInputSignup" required />
                 </div>
                 <div id="passwordInputSignupItem" className="inputItem">
-                  <IonLabel>Password</IonLabel>
+                  <div>Password</div>
                   <input type="password" name="password" id="passwordInputSignup" autoComplete="password" required />
                 </div>
                 <Button id="signupBtn" title="Signup" className="btn regBtn inputItem" type={`submit`}>
                   Sign Up
                 </Button>
               </form>
-            </IonCol>
-            <IonCol class="emptyColSpacer" />
-          </IonRow>
-        </IonGrid>
+            </div>
+            <div className="emptyColSpacer" />
+          </div>
+        </div>
       </div>
     </div>
   );

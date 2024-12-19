@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Button } from '@mui/material';
-import { IonCol, IonGrid, IonLabel, IonRow } from '../functions';
 
 export default function Signin() {
   const [form, setForm] = useState<any>({email: ``, password: ``});
@@ -13,26 +12,26 @@ export default function Signin() {
   };
   return (
     <div className='form' id="signin">
-      <div className="innerForm">
-        <IonGrid className='formElements'>
-          <IonRow className='formRow'>
-            <IonCol className="formCol">
-              <IonLabel className="formLabel">Sign In</IonLabel>
+      <div className="innerForm" style={{ width: `57%` }}>
+        <div className='formElements'>
+          <div className='formRow'>
+            <div className="formCol">
+              <div className="formLabel">Sign In</div>
               <form id="signinForm" className="signinForm" onInput={(event) => trackFormInput(event)}>
                 <div id="emailInputSigninItem" className="inputItem">
-                  <IonLabel>Email</IonLabel>
+                  <div>Email</div>
                   <input type="email" id="emailInputSignin" />
                 </div>
                 <div id="passwordInputSigninItem" className="inputItem">
-                  <IonLabel>Password</IonLabel>
+                  <div>Password</div>
                   <input type="password" id="passwordInputSignin" autoComplete="password" />
                 </div>
                 <Button id="signinBtn" className="btn regBtn inputItem" title='Signin'>Sign In</Button>
               </form>
-            </IonCol>
-            <IonCol class="emptyColSpacer" />
-          </IonRow>
-        </IonGrid>
+            </div>
+            <div className="emptyColSpacer" />
+          </div>
+        </div>
       </div>
     </div>
   );
