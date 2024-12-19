@@ -1,7 +1,10 @@
+import "react-toastify/dist/ReactToastify.css";
+
 import Head from "next/head";
 import Header from "./header";
 import Footer from "./footer";
 import TopButton from "./topButton";
+import { ToastContainer } from "react-toastify";
 import { brandName, description, logoURL } from "../shared/shared";
 
 export class PageProps {
@@ -22,6 +25,19 @@ export default function Page({ id, title = brandName, children }: PageProps) {
     </Head>
 
     <Header />
+
+    <ToastContainer
+      hideProgressBar={false}
+      position={`top-right`}
+      pauseOnHover={false}
+      newestOnTop={false}
+      autoClose={3500}
+      pauseOnFocusLoss
+      theme={`dark`}
+      closeOnClick
+      rtl={false}
+      draggable
+    />
 
     <div id={id} title={title} className={`page ${title}`}>
       {children}

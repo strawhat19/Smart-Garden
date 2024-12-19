@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { User } from '../shared/types/users';
-import { getFirestore } from 'firebase/firestore';
 import { GoogleAuthProvider, getAuth } from 'firebase/auth';
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
@@ -41,5 +41,11 @@ export const userConverter = {
       return new User(data);
     }
 }
+
+export const usersDatabaseCollection = environment + DatabaseTableNames.users;
+export const addUser = async (usr: User) => {
+  const userReference = doc(db, usersDatabaseCollection, usr?.id).withConverter(userConverter);
+  await setDoc(userReference, usr as User);
+};
 
 export default app;

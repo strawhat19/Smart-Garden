@@ -25,7 +25,9 @@ export class User {
   name: string = ``;
   index: number = 1;
   email: string = ``;
-  displayName: string = ``;
+  created: string = ``;
+  updated: string = ``;
+  password?: string = ``;
   provider: string = `Firebase`;
   role: string = ROLES.Guest.name;
   level: number = ROLES.Guest.level;
@@ -35,9 +37,11 @@ export class User {
 
   constructor(data: Partial<User>) {
     Object.assign(this, data);
-    let currentTimeStampNoSpaces = new Date().toLocaleString().replaceAll(` `, `_`).replaceAll(`,`, `_`).replaceAll(`/`, `_`).replaceAll(`:`, `_`);
-    if (!this.displayName || this.displayName == ``) this.displayName = this.email.split(`@`)[0];
-    if (!this.id || this.id == ``) this.id = `${this.index}_User_${this.displayName}_${currentTimeStampNoSpaces}_${this.uid}`;
-    if (!this.name) this.name = this.displayName;
+    let now = new Date().toLocaleString();
+    let currentTimeStampNoSpaces = now.replaceAll(` `, `_`).replaceAll(`,`, `_`).replaceAll(`/`, `_`).replaceAll(`:`, `_`);
+    if (!this.name || this.name == ``) this.name = this.email.split(`@`)[0];
+    if (!this.id || this.id == ``) this.id = `${this.index}_User_${this.name}_${currentTimeStampNoSpaces}_${this.uid}`;
+    if (!this.created) this.created = now;
+    if (!this.updated) this.updated = now;
   }
 }
