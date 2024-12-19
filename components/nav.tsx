@@ -2,9 +2,9 @@ import Link from "next/link";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 import { anchorPosition } from "./menu";
-import { Themes } from "../shared/enums";
 import { scrollBottom } from "../functions";
 import { useContext, useState } from "react";
+import { AuthStates, Themes } from "../shared/enums";
 import { guest, sharedDatabase } from "../shared/shared";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faDatabase, faMoon, faSpa, faSun, faUserPlus } from "@fortawesome/free-solid-svg-icons";
@@ -14,10 +14,10 @@ export class NavItem {
     id: string = ``;
     href: string = ``;
     title: string = ``;
-    form?: string = ``;
     new?: boolean = false;
     auth?: boolean = false;
     className: string = ``;
+    authState?: string = ``;
     constructor(data: Partial<NavItem>) {
         Object.assign(this, data);
     }
@@ -51,7 +51,7 @@ export const navOptions = {
         className: `btn regBtn signinBtn lightBtn`,
         title: `Sign In`,
         icon: faArrowRightToBracket,
-        form: `signin`,
+        authState: AuthStates.signin,
         auth: true,
     }),
     signup: new NavItem({
@@ -59,19 +59,19 @@ export const navOptions = {
         className: `btn regBtn signupBtn`,
         title: `Sign Up`,
         icon: faUserPlus,
-        form: `signup`,
+        authState: AuthStates.signup,
         auth: true,
     }),
 }
 
 export default function Nav({ direction = `row` }: any) {
     const router = useRouter();
-    const [navItems,] = useState<any>(Object.values(navOptions));
-    let { user, menu, form, setForm, setMenu, theme, setTheme } = useContext<any>(sharedDatabase);
+    const [navItems,] = useState<NavItem[]>(Object.values(navOptions));
+    let { user, menu, authState, setAuthState, setMenu, theme, setTheme } = useContext<any>(sharedDatabase);
 
     const onRegButtonClick = (e: any, id: any) => {
-        if (id == navOptions.signin.id) setForm(`signin`);
-        else setForm(`signup`);
+        if (id == navOptions.signin.id) setAuthState(AuthStates.signin);
+        else setAuthState(AuthStates.signup);
         scrollBottom();
         if (menu[anchorPosition] == true) {
             setMenu({ [anchorPosition]: false });
@@ -86,7 +86,7 @@ export default function Nav({ direction = `row` }: any) {
                     navItem.href ? (
                         // <Tooltip key={nIdx} title={title} arrow>
                             // <div className={`tooltipElement`}>
-                                <Link key={nIdx} href={navItem.href} target={navItem.new ? `_blank` : `_self`}>
+                                <Link key={nIdx} href={navItem.href} target={navItem.new ? `_blank` : `_self`} passHref={true}>
                                     <div className={`navItem navLink ${className} ${router.pathname === navItem?.href ? `active` : `inactive`}`}>
                                         <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
                                         {title}
@@ -101,7 +101,7 @@ export default function Nav({ direction = `row` }: any) {
                                     id={id} 
                                     key={nIdx}
                                     onClick={(e) => className.includes(`regBtn`) ? onRegButtonClick(e, id) : undefined}
-                                    className={`navItem navButton ${className} ${form == navItem.form ? `active` : `inactive`}`} 
+                                    className={`navItem navButton ${className} ${authState == navItem.authState ? `active` : `inactive`}`} 
                                 >
                                     <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
                                     {title}

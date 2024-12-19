@@ -1,9 +1,9 @@
 import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useContext, useState } from 'react';
-import { ROLES, User } from '../shared/types/users';
 import { sharedDatabase } from '../shared/shared';
 import { addUser, auth } from '../server/firebase';
+import { ROLES, User } from '../shared/types/users';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 export default function Signup() {
@@ -58,11 +58,15 @@ export default function Signup() {
               <div className="formLabel">Sign Up</div>
               <form onSubmit={(e) => onSignUp(e)} id="signupForm" className="signupForm">
                 <div id="emailInputSignupItem" className="inputItem">
-                  <div>Email</div>
+                  <div className={`authLabel left`} style={{ padding: `0 0 5px 3px` }}>
+                    Email
+                  </div>
                   <input type="email" name="email" id="emailInputSignup" required />
                 </div>
                 <div id="passwordInputSignupItem" className="inputItem">
-                  <div>Password</div>
+                  <div className={`authLabel left`} style={{ padding: `0 0 5px 3px` }}>
+                    Password
+                  </div>
                   <input type="password" name="password" id="passwordInputSignup" autoComplete="password" required />
                 </div>
                 <Button id="signupBtn" title="Signup" className="btn regBtn inputItem" type={`submit`}>

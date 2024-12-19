@@ -19,11 +19,15 @@ export default function Signin() {
               <div className="formLabel">Sign In</div>
               <form id="signinForm" className="signinForm" onInput={(event) => trackFormInput(event)}>
                 <div id="emailInputSigninItem" className="inputItem">
-                  <div>Email</div>
+                  <div className={`authLabel left`} style={{ padding: `0 0 5px 3px` }}>
+                    Email
+                  </div>
                   <input type="email" id="emailInputSignin" />
                 </div>
                 <div id="passwordInputSigninItem" className="inputItem">
-                  <div>Password</div>
+                  <div className={`authLabel left`} style={{ padding: `0 0 5px 3px` }}>
+                    Password
+                  </div>
                   <input type="password" id="passwordInputSignin" autoComplete="password" />
                 </div>
                 <Button id="signinBtn" className="btn regBtn inputItem" title='Signin'>Sign In</Button>

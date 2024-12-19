@@ -32,7 +32,7 @@ export default function MobileMenu() {
                 <Nav direction={`column`} />
                 {/* Home Link */}
                 {/* <div className="navigation-tab firstLink">
-                    <Link href={`/`}>
+                    <Link href={`/`} passHref={true}>
                         <a className="current active hoverLink" href="./">
                             <FontAwesomeIcon icon={faHouseChimneyUser} /> Home
                         </a>

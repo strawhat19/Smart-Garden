@@ -1,8 +1,8 @@
-import { Themes } from "./enums";
 import { createContext } from "react";
 import { Plant } from "./types/plants";
 import { ROLES, User } from "./types/users";
 import { useState, useEffect } from "react";
+import { AuthStates, Themes } from "./enums";
 import { samplePlants } from "../database/plants";
 
 export const brandName = `Smart Garden AI`;
@@ -19,10 +19,10 @@ export default function SharedData({ children }: any) {
     const [open, setOpen] = useState<any>(false);
     const [user, setUser] = useState<User>(guest);
     const [users, setUsers] = useState<User[]>([]);
-    const [form, setForm] = useState<any>(`signin`);
     const [menu, setMenu] = useState<any>({left: false});
     const [scrolled, setScrolled] = useState<any>(false);
     const [theme, setTheme] = useState<any>(Themes.light);
+    const [authState, setAuthState] = useState<AuthStates | any>(AuthStates.signin);
 
     let [plants, setPlants] = useState<Plant[]>(samplePlants?.map((plnt: Plant) => new Plant(plnt)));
 
@@ -52,11 +52,11 @@ export default function SharedData({ children }: any) {
             open, setOpen,
             user, setUser,
             show, setShow,
-            form, setForm,
             users, setUsers,
             theme, setTheme,
             plants, setPlants,
             scrolled, setScrolled,
+            authState, setAuthState,
         }}>
             <div title={brandName} className={`app ${theme} ${brandName.replaceAll(` `, `_`)}`}>
                 {children}

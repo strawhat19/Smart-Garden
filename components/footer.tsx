@@ -1,6 +1,7 @@
 import Signin from "./signin";
 import Signup from "./signup";
 import { useContext } from "react";
+import { AuthStates } from "../shared/enums";
 import { sharedDatabase } from "../shared/shared";
 import { faCopyright } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,19 +9,23 @@ import { faArrowRightToBracket, faUserPlus } from "@fortawesome/free-solid-svg-i
 
 
 export default function Footer() { 
-    let { form } = useContext<any>(sharedDatabase);
+    let { authState } = useContext<any>(sharedDatabase);
 
     return <>
       <footer className={`footer`} style={{ position: `relative`, zIndex: 10 }}>
 
         <div className={`sectionEndText`} style={{ paddingBottom: 0, paddingTop: 75 }}>
-          <FontAwesomeIcon icon={form == `signup` ? faUserPlus : faArrowRightToBracket} style={{ paddingRight: 15 }} className={`primaryVariant`} />
-          {form == `signup` ? `REGISTER` : `WELCOME`} 
+          <FontAwesomeIcon 
+            className={`primaryVariant`} 
+            style={{ paddingRight: 15 }} 
+            icon={authState == AuthStates.signup ? faUserPlus : faArrowRightToBracket} 
+          />
+          {authState == AuthStates.signup ? `REGISTER` : `WELCOME`} 
           <span className={`primaryVariant`}>{` // `}</span> 
-          {form == `signup` ? `TODAY` : `BACK`}
+          {authState == AuthStates.signup ? `TODAY` : `BACK`}
         </div>
 
-        {form === `signup` ? <Signup /> : <Signin />}
+        {authState === AuthStates.signup ? <Signup /> : <Signin />}
 
         <div className="sectionEndText">
           <FontAwesomeIcon icon={faCopyright} style={{ paddingRight: 15 }} className={`primaryVariant`} />
