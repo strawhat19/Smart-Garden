@@ -1,46 +1,32 @@
 import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useContext, useState } from 'react';
+import { AuthStates } from '../shared/enums';
 import { sharedDatabase } from '../shared/shared';
 import { addUser, auth } from '../server/firebase';
-import { ROLES, User } from '../shared/types/users';
+import { ROLES, User, userTypes } from '../shared/types/users';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { userFromForm } from '../functions';
 
 export default function Signup() {
-  let { users } = useContext<any>(sharedDatabase);
-
-  const createUserFromForm = (form: any) => {
-    let { email: emailField, password: passwordField } = form;
-
-    let email = emailField?.value;
-    let password = passwordField?.value;
-
-    let usersLength = users ? users?.length : 0;
-    let index = usersLength + 1;
-
-    let newUser = new User({
-      email,
-      index,
-      password,
-      role: ROLES.Subscriber.name,
-      level: ROLES.Subscriber.level,
-    });
-
-    return newUser;
-  }
+  let { users, setUser, setAuthState } = useContext<any>(sharedDatabase);
 
   const onSignUp = (e?: any) => {
     e.preventDefault();
     let form = e.target;
-    let newUser = createUserFromForm(form);
-    console.log(`New User`, newUser);
-    toast.success(`User Signed Up`);
-    // form.reset();
+    let formUser = userFromForm(form, users);
+
+    setAuthState(AuthStates.signin);
+    setUser(formUser);
+    form.reset();
+    
+    console.log(`Form User`, formUser);
+    toast.success(`User Signed Up as ${formUser.name}`);
 
     // createUserWithEmailAndPassword(auth, email, password).then(fireBaseUserCred => {
     //   let { uid } = fireBaseUserCred?.user;
-    //   newUser = { ...newUser, uid };
-    //   addUser(newUser);
+    //   formUser = { ...formUser, uid };
+    //   addUser(formUser);
     //   // window.location.href = `/signin`;
     // }).catch(fireBaseCreateUserError => {
     //   toast.error(`Failed to Create User`);

@@ -1,4 +1,7 @@
+import { capitalize } from "@mui/material";
 import { Plant } from "./plants";
+
+export const userTypes = { simulated: `simulated`, real: `real` };
 
 export class Role {
   name: any;
@@ -27,19 +30,20 @@ export class User {
   email: string = ``;
   created: string = ``;
   updated: string = ``;
-  password?: string = ``;
   provider: string = `Firebase`;
   role: string = ROLES.Guest.name;
   level: number = ROLES.Guest.level;
-
+  
   garden?: any[] = [];
   plants?: Plant[] = [];
+  password?: string = ``;
+  type?: string = userTypes.real;
 
   constructor(data: Partial<User>) {
     Object.assign(this, data);
     let now = new Date().toLocaleString();
     let currentTimeStampNoSpaces = now.replaceAll(` `, `_`).replaceAll(`,`, `_`).replaceAll(`/`, `_`).replaceAll(`:`, `_`);
-    if (!this.name || this.name == ``) this.name = this.email.split(`@`)[0];
+    if (!this.name || this.name == ``) this.name = capitalize(this.email.split(`@`)[0]);
     if (!this.id || this.id == ``) this.id = `${this.index}_User_${this.name}_${currentTimeStampNoSpaces}_${this.uid}`;
     if (!this.created) this.created = now;
     if (!this.updated) this.updated = now;

@@ -8,6 +8,7 @@ import { AuthStates, Themes } from "../shared/enums";
 import { guest, sharedDatabase } from "../shared/shared";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faDatabase, faMoon, faSpa, faSun, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { userTypes } from "../shared/types/users";
 
 export class NavItem {
     icon: any;
@@ -95,7 +96,7 @@ export default function Nav({ direction = `row` }: any) {
                             // </div>
                         // </Tooltip>
                     ) : (
-                        navItem.auth && user == guest ? (
+                        navItem.auth && (user == guest || user.type == userTypes.simulated) ? (
                             // <Tooltip key={nIdx} title={title} arrow>
                                 <Button 
                                     id={id} 

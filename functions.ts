@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { ROLES, User, userTypes } from './shared/types/users';
 
 // Helper Functions
 export const titleCase = (string: string) => string.replace(/\b\w/g, (match: string) => match.toUpperCase());
@@ -13,19 +14,32 @@ export const scrollBottom = () => {
   window.scrollTo(0,document.documentElement.scrollHeight); // For Chrome, Firefox, IE and Opera
 }
 
+export const userFromForm = (form: any, users: any) => {
+  let { email: emailField, password: passwordField } = form;
+
+  let email = emailField?.value;
+  let password = passwordField?.value;
+
+  let usersLength = users ? users?.length : 0;
+  let index = usersLength + 1;
+
+  let formUser = new User({
+    email,
+    index,
+    password,
+    role: ROLES.Guest.name,
+    level: ROLES.Guest.level,
+    type: userTypes.simulated,
+  });
+
+  return formUser;
+}
+
 export const helperFunctions = {
    // Get Current Page State
    getCurrentPageName: () => {
       return window.location.hash.slice(window.location.hash.lastIndexOf(`/`)).replace(`/`, ``) as string;
    },
-
-  // Cut Off Long Strings of Text & Replace with Custom Character... Also known as Truncation
-  cutOffTextAndReplace: (string: string, end: number, replacement: string) => {
-    if (!replacement) {
-      replacement = `...` || `-`;
-    }
-    return string?.length > end ? string?.substring(0, end - 1) + replacement : string;
-  },
 
   // Capitalize First Letter of Every Word in String
   capitalizeAllWords: (string: string) => {

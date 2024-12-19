@@ -1,4 +1,7 @@
 body {
+    .Toastify__close-button {
+        display: none;
+    }
     .signupBtn {
         &.active {
             color: white !important;
@@ -35,7 +38,7 @@ body {
         }
         footer {
             background: var(--secondaryVariant);
-            .sectionEndText, .formLabel, .formElements ion-label {
+            .sectionEndText, .authLabel, .formLabel, .formElements ion-label {
                 color: white;
             }
             .formElements {
