@@ -19,7 +19,7 @@ export class PageProps {
 export default function Page({ id, title = brandName, children }: PageProps) {
   return <>
     <Head>
-      <title>{title} | {brandName}</title>
+      <title>{`${title} | ${brandName}`}</title>
       <meta name="description" content={description} />
       <link rel="icon" href={logoURL} />
     </Head>
