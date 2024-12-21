@@ -17,8 +17,8 @@ export default function SharedData({ children }: any) {
     const [height, setHeight] = useState<any>(0);
     const [show, setShow] = useState<any>(false);
     const [open, setOpen] = useState<any>(false);
-    const [user, setUser] = useState<User>(guest);
     const [users, setUsers] = useState<User[]>([]);
+    const [user, setUser] = useState<User | null>(guest);
     const [menu, setMenu] = useState<any>({left: false});
     const [scrolled, setScrolled] = useState<any>(false);
     const [theme, setTheme] = useState<any>(Themes.light);

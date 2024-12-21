@@ -14,7 +14,7 @@ export const scrollBottom = () => {
   window.scrollTo(0,document.documentElement.scrollHeight); // For Chrome, Firefox, IE and Opera
 }
 
-export const userFromForm = (form: any, users: any) => {
+export const userFromForm = (form: any, users: any, role = ROLES.Guest) => {
   let { email: emailField, password: passwordField } = form;
 
   let email = emailField?.value;
@@ -27,8 +27,8 @@ export const userFromForm = (form: any, users: any) => {
     email,
     index,
     password,
-    role: ROLES.Guest.name,
-    level: ROLES.Guest.level,
+    role: role.name,
+    level: role.level,
     type: userTypes.simulated,
   });
 
