@@ -18,7 +18,7 @@ export default function Signin() {
     setUser(formUser);
     form.reset();
     
-    console.log(`Sign In Form User`, formUser);
+    // console.log(`Sign In Form User`, formUser);
     toast.success(`User Signed In as ${formUser.name}`);
   }
 

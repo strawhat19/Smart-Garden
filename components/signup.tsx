@@ -20,7 +20,7 @@ export default function Signup() {
     setUser(formUser);
     form.reset();
     
-    console.log(`Sign Up Form User`, formUser);
+    // console.log(`Sign Up Form User`, formUser);
     toast.success(`User Signed Up as ${formUser.name}`);
 
     // createUserWithEmailAndPassword(auth, email, password).then(fireBaseUserCred => {
