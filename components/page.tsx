@@ -19,9 +19,9 @@ export class PageProps {
 export default function Page({ id, title = brandName, children }: PageProps) {
   return <>
     <Head>
+      <link rel="icon" href={logoURL} />
       <title>{`${title} | ${brandName}`}</title>
       <meta name="description" content={description} />
-      <link rel="icon" href={logoURL} />
     </Head>
 
     <Header />
@@ -46,5 +46,9 @@ export default function Page({ id, title = brandName, children }: PageProps) {
     <TopButton />
 
     <Footer />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" defer></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
   </>
 }
