@@ -9,6 +9,14 @@
     }
 }
 
+.sideMenuHomeButton {
+    display: flex;
+    align-items: center;
+    .sideMenuHomeBrandName {
+        font-size: 20px;
+    }
+}
+
 .themeBtn {
     padding: 0 !important;
     svg {

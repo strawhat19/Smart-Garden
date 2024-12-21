@@ -6,9 +6,9 @@ import { scrollBottom } from "../functions";
 import { useContext, useState } from "react";
 import { AuthStates, Themes } from "../shared/enums";
 import { guest, sharedDatabase } from "../shared/shared";
+import { ROLES, userTypes } from "../shared/types/users";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightToBracket, faDatabase, faMoon, faSignOut, faSignOutAlt, faSpa, faSun, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { ROLES, userTypes } from "../shared/types/users";
 
 export class NavItem {
     icon: any;

@@ -15,7 +15,7 @@ export default function MobileMenu() {
         <div className={`menu ${menu[anchorPosition] == true ? `menuOpen` : `menuClosed`}`}>
             <div className={`innerMenu`}>
                 <Link href={`/`} passHref={true}>
-                    <div title={`Home`}>
+                    <div title={`Home`} className={`sideMenuHomeButton`}>
                         <CustomImage 
                             alt={`logo`} 
                             src={logoURL} 
@@ -25,7 +25,9 @@ export default function MobileMenu() {
                             id={`menuLogo`} 
                             className={`logo`} 
                         />
-                        {brandName.split(` `)[0]} {brandName.split(` `)[1]}
+                        <div className={`sideMenuHomeBrandName`}>
+                            {brandName.split(` `)[0]} {brandName.split(` `)[1]}
+                        </div>
                     </div>
                 </Link>
                 {/* Nav */}
@@ -39,7 +41,7 @@ export default function MobileMenu() {
                     </Link>
                 </div> */}
                 {/* User Links */}
-                {user != guest ? (
+                {/* {user != guest ? (
                     <>
                         <div className="navigation-tab">
                             <Link href={`/profile`} passHref={true}>
@@ -62,7 +64,7 @@ export default function MobileMenu() {
                             </Button>
                         </div>
                     </>
-                ) : <></>}
+                ) : <></>} */}
             </div>
             <div className="menuDash menuFooter">
                 <div className="nameText">
