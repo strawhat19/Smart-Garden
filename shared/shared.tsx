@@ -1,9 +1,10 @@
-import { createContext } from "react";
-import { Plant } from "./types/plants";
-import { ROLES, User } from "./types/users";
-import { useState, useEffect } from "react";
-import { AuthStates, Themes } from "./enums";
-import { samplePlants } from "../database/plants";
+import { createContext } from 'react';
+import { Plant } from './types/plants';
+import { ROLES, User } from './types/users';
+import { useState, useEffect } from 'react';
+import { AuthStates, Themes } from './enums';
+import { samplePlants } from '../database/plants';
+import { checkForStoredPlants } from '../pages/plants';
 
 export const brandName = `Smart Garden AI`;
 export const logoURL = `/assets/SmartGardenIcon.svg`;
@@ -24,13 +25,12 @@ export default function SharedData({ children }: any) {
     const [theme, setTheme] = useState<any>(Themes.light);
     const [authState, setAuthState] = useState<AuthStates | any>(AuthStates.signin);
 
-    let [plants, setPlants] = useState<Plant[]>(samplePlants?.map((plnt: Plant) => new Plant(plnt)));
-
-    // useEffect(() => {
-    //     console.log(`User`, user);
-    // }, [user])
+    const defaultPlants = samplePlants.map((plnt: Plant) => new Plant(plnt));
+    const [plants, setPlants] = useState<Plant[]>(defaultPlants);
 
     useEffect(() => {
+        checkForStoredPlants(setPlants);
+
         const windowEvents = () => {
             setWidth(window.innerWidth);
             setHeight(window.innerHeight);

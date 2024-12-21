@@ -2,6 +2,16 @@
     display: none;
 }
 
+.badge {
+    color: black;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 11px;
+    background: white;
+    border-radius: 100px;
+    font-family: 'Montserrat' !important;
+}
+
 body {
     .Toastify__close-button {
         display: none;

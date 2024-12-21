@@ -16,6 +16,10 @@
             object-fit: cover;
             object-position: 100% 12%;
         }
+        .plantIndexBadge {
+            position: absolute;
+            margin: 5px 5px 0 0;
+        }
         .plantDataRow {
             width: 100%;
             display: flex;

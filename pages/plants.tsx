@@ -1,13 +1,26 @@
-import Page from "../components/page";
-import Main from "../components/main";
-import { Swapy, createSwapy } from "swapy";
-import Section from "../components/section";
-import { useContext, useState } from "react";
-import { ROLES } from "../shared/types/users";
-import { Plant } from "../shared/types/plants";
-import React, { useEffect, useRef } from "react";
-import CustomImage from "../components/customImage";
-import { guest, logoURL, sharedDatabase } from "../shared/shared";
+import Page from '../components/page';
+import Main from '../components/main';
+import { Swapy, createSwapy } from 'swapy';
+import Section from '../components/section';
+import { useContext, useState } from 'react';
+import { ROLES } from '../shared/types/users';
+import { Plant } from '../shared/types/plants';
+import React, { useEffect, useRef } from 'react';
+import CustomImage from '../components/customImage';
+import { guest, logoURL, sharedDatabase } from '../shared/shared';
+
+export const checkForStoredPlants = (setPlants: any) => {
+  let hasStoredPlants = localStorage.getItem(`plants`);
+  if (hasStoredPlants) {
+    let storedPlants = JSON.parse(hasStoredPlants);
+    if (storedPlants) {
+      let appPlants = storedPlants.map((plnt: any) => new Plant(plnt));
+      if (appPlants) {
+        setPlants(appPlants);
+      }
+    }
+  }
+}
 
 export default function Plants() {
   let swapyRef = useRef<Swapy | null>(null);
@@ -40,12 +53,27 @@ export default function Plants() {
     
     getPlants();
 
-    if (user != guest && user.level >= ROLES.Subscriber.level) {
+    let userIsSignedIn = user != guest && user.level >= ROLES.Subscriber.level;
+    if (userIsSignedIn) {
       if (containerRef.current) {
         setSwapping(true);
         swapyRef.current = createSwapy(containerRef.current, {
-          animation: `spring`
+          animation: `spring`,
         });
+        swapyRef.current.onSwapEnd((onSwapEndEvent) => {
+          let { hasChanged, slotItemMap } = onSwapEndEvent;
+          let { asObject } = slotItemMap;
+          if (hasChanged) {
+            let updatedArrayOfPlants = Object.values(asObject).map(plnt => new Plant(JSON.parse(plnt)));
+            localStorage.setItem(`plants`, JSON.stringify(updatedArrayOfPlants));
+            let plantIndexes = document.querySelectorAll(`.plantIndex`);
+            if (plantIndexes && plantIndexes.length > 0) {
+              plantIndexes.forEach((piEl, pI) => {
+                piEl.innerHTML = (pI + 1).toString();
+              })
+            }
+          }
+        })
       }
     } else {
       setSwapping(false);
@@ -62,15 +90,15 @@ export default function Plants() {
     <Page id={`plants`} title={`Plants`}>
       <Main className={`plants`} title={`Plants DB Admin`} desc={`A place to manage your plants`}>
         <Section className={`plantsSection`} fontColor={`white`} background={`var(--secondaryVariant)`}>
-          <h2>Plants</h2>
+          <h2>{swapping ? `Your` : ``} Plants</h2>
           <div className={`plantsContainer`} ref={containerRef}>
             {plants.map((plant: Plant, pIdx: any) => {
               return (
-                <div key={pIdx} data-swapy-slot={plant.id}>
+                <div key={pIdx} data-swapy-slot={pIdx + 1}>
                   <div 
                     data-id={plant.id} 
                     id={`plant_${plant.id}`} 
-                    data-swapy-item={plant.id}
+                    data-swapy-item={JSON.stringify(plant)}
                     className={`plntCard plant plant_position_${pIdx + 1} ${swapping ? `cursorGrab` : ``}`} 
                   >
                     <CustomImage 
@@ -83,6 +111,9 @@ export default function Plants() {
                       id={`plantImage-${plant.id}`} 
                       src={plant.image != null ? plant.image : logoURL} 
                     />
+                    <div className={`plantIndex plantIndexBadge badge itemIndexBadge`}>
+                      {pIdx + 1}
+                    </div>
                     <div data-id={plant.id} id={`plant_data_row_${plant.id}`} className={`plantDataRow`}>
                       <strong title={`Name`} className={`plantName plantTitle`}>
                         {plant.name}
