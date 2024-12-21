@@ -27,6 +27,10 @@ export default function SharedData({ children }: any) {
     let [plants, setPlants] = useState<Plant[]>(samplePlants?.map((plnt: Plant) => new Plant(plnt)));
 
     useEffect(() => {
+        console.log(`User`, user);
+    }, [user])
+
+    useEffect(() => {
         const windowEvents = () => {
             setWidth(window.innerWidth);
             setHeight(window.innerHeight);

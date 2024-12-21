@@ -7,8 +7,8 @@ import { useContext, useState } from "react";
 import { AuthStates, Themes } from "../shared/enums";
 import { guest, sharedDatabase } from "../shared/shared";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightToBracket, faDatabase, faMoon, faSpa, faSun, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { userTypes } from "../shared/types/users";
+import { faArrowRightToBracket, faDatabase, faMoon, faSignOut, faSignOutAlt, faSpa, faSun, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { ROLES, userTypes } from "../shared/types/users";
 
 export class NavItem {
     icon: any;
@@ -63,12 +63,25 @@ export const navOptions = {
         authState: AuthStates.signup,
         auth: true,
     }),
+    signout: new NavItem({
+        id: `signoutBtn`,
+        className: `btn regBtn signoutBtn`,
+        title: `Sign Out`,
+        icon: faSignOut,
+        authState: AuthStates.signout,
+        auth: true,
+    }),
 }
 
 export default function Nav({ direction = `row` }: any) {
     const router = useRouter();
     const [navItems,] = useState<NavItem[]>(Object.values(navOptions));
-    let { user, menu, authState, setAuthState, setMenu, theme, setTheme } = useContext<any>(sharedDatabase);
+    let { user, setUser, menu, authState, setAuthState, setMenu, theme, setTheme } = useContext<any>(sharedDatabase);
+
+    const onSignOut = (e?: any) => {
+        setUser(guest);
+        setAuthState(AuthStates.signup);
+    }
 
     const onRegButtonClick = (e: any, id: any) => {
         if (id == navOptions.signin.id) setAuthState(AuthStates.signin);
@@ -81,7 +94,7 @@ export default function Nav({ direction = `row` }: any) {
 
     return <>
         <nav className={`navigation buttons ${direction}`}>
-            {navItems.map((navItem: any, nIdx: any) => {
+            {navItems.map((navItem: NavItem, nIdx: any) => {
                 let { id, title, className, icon } = navItem;
                 return (
                     navItem.href ? (
@@ -98,15 +111,39 @@ export default function Nav({ direction = `row` }: any) {
                     ) : (
                         navItem.auth && (user == guest || user.type == userTypes.simulated) ? (
                             // <Tooltip key={nIdx} title={title} arrow>
-                                <Button 
-                                    id={id} 
-                                    key={nIdx}
-                                    onClick={(e) => className.includes(`regBtn`) ? onRegButtonClick(e, id) : undefined}
-                                    className={`navItem navButton ${className} ${authState == navItem.authState ? `active` : `inactive`}`} 
-                                >
-                                    <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
-                                    {title}
-                                </Button>
+                                user.level > ROLES.Guest.level ? (
+                                    navItem.authState == AuthStates.signout ? (
+                                        <Button 
+                                            id={id} 
+                                            key={nIdx}
+                                            onClick={(e) => onSignOut(e)}
+                                            className={`navItem navButton signOutBtn ${className}`} 
+                                        >
+                                            <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
+                                            {title}
+                                        </Button>
+                                    ) : (
+                                        <div key={nIdx} className={`empty emptySpacer`}>
+                                            {/* Empty */}
+                                        </div>
+                                    )
+                                ) : (
+                                    navItem.authState != AuthStates.signout ? (
+                                        <Button 
+                                            id={id} 
+                                            key={nIdx}
+                                            onClick={(e) => className.includes(`regBtn`) ? onRegButtonClick(e, id) : undefined}
+                                            className={`navItem navButton ${className} ${authState == navItem.authState ? `active` : `inactive`}`} 
+                                        >
+                                            <FontAwesomeIcon icon={icon} style={{ paddingRight: 15 }} />
+                                            {title}
+                                        </Button>
+                                    ) : (
+                                        <div key={nIdx} className={`empty emptySpacer`}>
+                                            {/* Empty */}
+                                        </div>
+                                    )
+                                )
                             // </Tooltip>
                         ) : title == `Theme` ? (
                             <Button 

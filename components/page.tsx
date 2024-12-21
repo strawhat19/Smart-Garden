@@ -28,7 +28,7 @@ export default function Page({ id, title = brandName, children }: PageProps) {
 
     <ToastContainer
       hideProgressBar={false}
-      position={`top-right`}
+      position={`bottom-left`}
       pauseOnHover={false}
       newestOnTop={false}
       autoClose={3500}
