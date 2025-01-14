@@ -39,7 +39,7 @@ export default function Page({ id, title = brandName, children }: PageProps) {
       position={`bottom-left`}
     />
 
-    <div id={id} title={title} className={`page ${title}`}>
+    <div id={id} className={`page ${title}`}>
       {children}
     </div>
 

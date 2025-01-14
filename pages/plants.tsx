@@ -1,13 +1,16 @@
 import Page from '../components/page';
 import Main from '../components/main';
+import Board from '../components/board';
+import Kboard from '../components/kboard';
 import { Swapy, createSwapy } from 'swapy';
 import Section from '../components/section';
 import { useContext, useState } from 'react';
 import { ROLES } from '../shared/types/users';
 import { Plant } from '../shared/types/plants';
+import KanbanBoard from '../components/kanban';
 import React, { useEffect, useRef } from 'react';
 import CustomImage from '../components/customImage';
-import { guest, logoURL, sharedDatabase } from '../shared/shared';
+import { devEnv, guest, logoURL, sharedDatabase } from '../shared/shared';
 
 export const checkForStoredPlants = (setPlants: any) => {
   let hasStoredPlants = localStorage.getItem(`plants`);
@@ -54,7 +57,8 @@ export default function Plants() {
     getPlants();
 
     let userIsSignedIn = user != guest && user.level >= ROLES.Subscriber.level;
-    if (userIsSignedIn) {
+    let swapyEnabled = devEnv || userIsSignedIn;
+    if (swapyEnabled) {
       if (containerRef.current) {
         setSwapping(true);
         swapyRef.current = createSwapy(containerRef.current, {
@@ -88,13 +92,19 @@ export default function Plants() {
 
   return <>
     <Page id={`plants`} title={`Plants`}>
-      <Main className={`plants`} title={`Plants DB Admin`} desc={`A place to manage your plants`}>
+      <Main className={`plants`} desc={`A place to manage your plants`}>
+        {/* <Section className={`kanbanSection`} fontColor={`white`} background={`var(--secondaryVariant)`}> */}
+          {/* <h2>Board</h2> */}
+          {/* <Kboard /> */}
+          {/* <Board /> */}
+          {/* <KanbanBoard /> */}
+        {/* </Section> */}
         <Section className={`plantsSection`} fontColor={`white`} background={`var(--secondaryVariant)`}>
           <h2>{swapping ? `Your` : ``} Plants</h2>
           <div className={`plantsContainer`} ref={containerRef}>
             {plants.map((plant: Plant, pIdx: any) => {
               return (
-                <div key={pIdx} data-swapy-slot={pIdx + 1}>
+                <div key={pIdx} className={`slot plantSlot`} data-swapy-slot={pIdx + 1}>
                   <div 
                     data-id={plant.id} 
                     id={`plant_${plant.id}`} 

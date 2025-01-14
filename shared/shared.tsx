@@ -11,6 +11,13 @@ export const logoURL = `/assets/SmartGardenIcon.svg`;
 export const guest: User = new User({ id: 0, name: `Guest`, role: ROLES.Guest.name, level: ROLES.Guest.level });
 export const description = `A tool to help healthy plant growth for personal gardens with AI assistance along the way!`;
 
+export const showDevFeatures = true;
+export const devEnv = process.env.NODE_ENV == `development` ? showDevFeatures : false;
+// export const urlHostIncludes = (string: string) => window && window?.location?.host?.includes(string);
+// export const localEnv = urlHostIncludes(`local`) ? showDevFeatures : false;
+// export const devEnv = localEnv || urlHostIncludes(`dev`) ? showDevFeatures : false;
+// export const prodEnv = urlHostIncludes(`kenzacloud.com`) && (!localEnv && !devEnv) ? true : false;
+
 export const sharedDatabase = createContext<any>({});
 
 export default function SharedData({ children }: any) {

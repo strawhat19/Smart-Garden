@@ -12,6 +12,55 @@
     font-family: 'Montserrat' !important;
 }
 
+.kanban-board {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: #f4f4f4;
+  }
+  
+  .kanban-column {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .kanban-column-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  
+  .kanban-column-cards {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .kanban-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+  }
+
+  .slot[data-swapy-highlighted] {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .column {
+    min-width: 350px;
+    border-radius: 15px;
+  }
+
 body {
     .Toastify__close-button {
         display: none;
