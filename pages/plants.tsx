@@ -1,13 +1,10 @@
 import Page from '../components/page';
 import Main from '../components/main';
-import Board from '../components/board';
-import Kboard from '../components/kboard';
 import { Swapy, createSwapy } from 'swapy';
 import Section from '../components/section';
 import { useContext, useState } from 'react';
 import { ROLES } from '../shared/types/users';
 import { Plant } from '../shared/types/plants';
-import KanbanBoard from '../components/kanban';
 import React, { useEffect, useRef } from 'react';
 import CustomImage from '../components/customImage';
 import { devEnv, guest, logoURL, sharedDatabase } from '../shared/shared';
@@ -58,11 +55,14 @@ export default function Plants() {
 
     let userIsSignedIn = user != guest && user.level >= ROLES.Subscriber.level;
     let swapyEnabled = devEnv || userIsSignedIn;
+    
     if (swapyEnabled) {
       if (containerRef.current) {
         setSwapping(true);
         swapyRef.current = createSwapy(containerRef.current, {
+          // dragOnHold: true,
           animation: `spring`,
+          autoScrollOnDrag: true,
         });
         swapyRef.current.onSwapEnd((onSwapEndEvent) => {
           let { hasChanged, slotItemMap } = onSwapEndEvent;

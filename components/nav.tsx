@@ -16,6 +16,7 @@ export class NavItem {
     href: string = ``;
     title: string = ``;
     new?: boolean = false;
+    dev?: boolean = false;
     auth?: boolean = false;
     className: string = ``;
     authState?: string = ``;
@@ -47,6 +48,14 @@ export const navOptions = {
         href: `/plants`,
         icon: faSpa,
     }),
+    // experiments: new NavItem({
+    //     id: `experimentsBtn`,
+    //     className: `btn lightBtn`,
+    //     title: `experiments`,
+    //     href: `/experiments`,
+    //     icon: faSpa,
+    //     dev: true,
+    // }),
     signin: new NavItem({
         id: `signinBtn`,
         className: `btn regBtn signinBtn lightBtn`,
