@@ -39,3 +39,12 @@
         grid-template-columns: repeat(1, 1fr);
     }
 }
+
+.plant_subtasks {
+    width: 100%;
+    .subtask {
+        width: 100%;
+        background: black;
+        text-align: center;
+    }
+}

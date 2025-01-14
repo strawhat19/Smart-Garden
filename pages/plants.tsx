@@ -6,7 +6,7 @@ import { useContext, useState } from 'react';
 import { ROLES } from '../shared/types/users';
 import { Plant } from '../shared/types/plants';
 import React, { useEffect, useRef } from 'react';
-import CustomImage from '../components/customImage';
+import PlantComponent from '../components/plant';
 import { devEnv, guest, logoURL, sharedDatabase } from '../shared/shared';
 
 export const checkForStoredPlants = (setPlants: any) => {
@@ -55,8 +55,8 @@ export default function Plants() {
 
     let userIsSignedIn = user != guest && user.level >= ROLES.Subscriber.level;
     let swapyEnabled = devEnv || userIsSignedIn;
-    
-    if (swapyEnabled) {
+
+    if (swapyEnabled == false) {
       if (containerRef.current) {
         setSwapping(true);
         swapyRef.current = createSwapy(containerRef.current, {
@@ -93,55 +93,12 @@ export default function Plants() {
   return <>
     <Page id={`plants`} title={`Plants`}>
       <Main className={`plants`} desc={`A place to manage your plants`}>
-        {/* <Section className={`kanbanSection`} fontColor={`white`} background={`var(--secondaryVariant)`}> */}
-          {/* <h2>Board</h2> */}
-          {/* <Kboard /> */}
-          {/* <Board /> */}
-          {/* <KanbanBoard /> */}
-        {/* </Section> */}
         <Section className={`plantsSection`} fontColor={`white`} background={`var(--secondaryVariant)`}>
           <h2>{swapping ? `Your` : ``} Plants</h2>
           <div className={`plantsContainer`} ref={containerRef}>
-            {plants.map((plant: Plant, pIdx: any) => {
-              return (
-                <div key={pIdx} className={`slot plantSlot`} data-swapy-slot={pIdx + 1}>
-                  <div 
-                    data-id={plant.id} 
-                    id={`plant_${plant.id}`} 
-                    data-swapy-item={JSON.stringify(plant)}
-                    className={`plntCard plant plant_position_${pIdx + 1} ${swapping ? `cursorGrab` : ``}`} 
-                  >
-                    <CustomImage 
-                      height={200} 
-                      alt={`Plant`} 
-                      width={`100%`}
-                      effect={`blur`} 
-                      data-id={plant.id}
-                      className={`plantImage`} 
-                      id={`plantImage-${plant.id}`} 
-                      src={plant.image != null ? plant.image : logoURL} 
-                    />
-                    <div className={`plantIndex plantIndexBadge badge itemIndexBadge`}>
-                      {pIdx + 1}
-                    </div>
-                    <div data-id={plant.id} id={`plant_data_row_${plant.id}`} className={`plantDataRow`}>
-                      <strong title={`Name`} className={`plantName plantTitle`}>
-                        {plant.name}
-                      </strong>
-                      <i title={`Scientific Name`} className={`scientificName subData`}>
-                        {plant.scientific_name}
-                      </i>
-                      <span title={`Discovered In`} className={`discoveredIn subData`}>
-                        Discovered in {plant.discovered_year}
-                      </span>
-                      <span title={`Author`} className={`author subData`}>
-                      By {plant.author}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
+            {plants.map((plant: Plant, pIdx: any) => (
+              <PlantComponent key={pIdx} pIdx={pIdx} plant={plant} swapping={swapping} logoURL={logoURL} />
+            ))}
           </div>
         </Section>
       </Main>
