@@ -13,10 +13,6 @@ export const description = `A tool to help healthy plant growth for personal gar
 
 export const showDevFeatures = true;
 export const devEnv = process.env.NODE_ENV == `development` ? showDevFeatures : false;
-// export const urlHostIncludes = (string: string) => window && window?.location?.host?.includes(string);
-// export const localEnv = urlHostIncludes(`local`) ? showDevFeatures : false;
-// export const devEnv = localEnv || urlHostIncludes(`dev`) ? showDevFeatures : false;
-// export const prodEnv = urlHostIncludes(`kenzacloud.com`) && (!localEnv && !devEnv) ? true : false;
 
 export const sharedDatabase = createContext<any>({});
 
@@ -26,6 +22,7 @@ export default function SharedData({ children }: any) {
     const [show, setShow] = useState<any>(false);
     const [open, setOpen] = useState<any>(false);
     const [users, setUsers] = useState<User[]>([]);
+    const [swapping, setSwapping] = useState(false);
     const [user, setUser] = useState<User | null>(guest);
     const [menu, setMenu] = useState<any>({left: false});
     const [scrolled, setScrolled] = useState<any>(false);
@@ -67,6 +64,7 @@ export default function SharedData({ children }: any) {
             theme, setTheme,
             plants, setPlants,
             scrolled, setScrolled,
+            swapping, setSwapping,
             authState, setAuthState,
         }}>
             <div title={brandName} className={`app ${theme} ${brandName.replaceAll(` `, `_`)}`}>

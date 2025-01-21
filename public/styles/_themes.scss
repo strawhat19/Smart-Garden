@@ -51,9 +51,14 @@
     cursor: grab;
   }
 
-  .slot[data-swapy-highlighted] {
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.2);
+  .slot {
+    width: 100%;
+    &.plantSlot {
+        border-radius: 15px;
+    }
+    &[data-swapy-highlighted] {
+        background: rgba(255, 255, 255, 0.2);
+    }
   }
 
   .column {

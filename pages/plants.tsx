@@ -1,8 +1,8 @@
+import { useContext } from 'react';
 import Page from '../components/page';
 import Main from '../components/main';
 import { Swapy, createSwapy } from 'swapy';
 import Section from '../components/section';
-import { useContext, useState } from 'react';
 import { ROLES } from '../shared/types/users';
 import { Plant } from '../shared/types/plants';
 import React, { useEffect, useRef } from 'react';
@@ -23,10 +23,9 @@ export const checkForStoredPlants = (setPlants: any) => {
 }
 
 export default function Plants() {
-  let swapyRef = useRef<Swapy | null>(null);
-  let [swapping, setSwapping] = useState(false);
-  let containerRef = useRef<HTMLDivElement>(null);
-  let { user, plants, setPlants } = useContext<any>(sharedDatabase);
+  let swapyOuterRef = useRef<Swapy | null>(null);
+  let plantsContainerRef = useRef<HTMLDivElement>(null);
+  let { user, plants, setPlants, swapping, setSwapping } = useContext<any>(sharedDatabase);
 
   useEffect(() => {
     const initializePlants = (plnts: Plant[] = plants) => {
@@ -56,20 +55,35 @@ export default function Plants() {
     let userIsSignedIn = user != guest && user.level >= ROLES.Subscriber.level;
     let swapyEnabled = devEnv || userIsSignedIn;
 
-    if (swapyEnabled == false) {
-      if (containerRef.current) {
+    if (swapyEnabled) {
+      if (plantsContainerRef.current) {
         setSwapping(true);
-        swapyRef.current = createSwapy(containerRef.current, {
+
+        swapyOuterRef.current = createSwapy(plantsContainerRef.current, {
+          // group: `plants`,
           // dragOnHold: true,
           animation: `spring`,
+          // enabled: swapping,
           autoScrollOnDrag: true,
-        });
-        swapyRef.current.onSwapEnd((onSwapEndEvent) => {
+        } as any);
+
+        // let trg: any = null;
+        // swapyOuterRef.current.onBeforeSwap(({ source, target }: any): any => {
+        //   if (target) {
+        //     trg = target;
+        //     // if (target?.getAttribute(`data-swapy-slot`)?.startsWith(`subtask`)) {
+        //     //   return false; // Prevent swapping into subtask slots
+        //     // }
+        //   }
+        // });        
+
+        swapyOuterRef.current.onSwapEnd((onSwapEndEvent) => {
           let { hasChanged, slotItemMap } = onSwapEndEvent;
           let { asObject } = slotItemMap;
           if (hasChanged) {
             let updatedArrayOfPlants = Object.values(asObject).map(plnt => new Plant(JSON.parse(plnt)));
             localStorage.setItem(`plants`, JSON.stringify(updatedArrayOfPlants));
+
             let plantIndexes = document.querySelectorAll(`.plantIndex`);
             if (plantIndexes && plantIndexes.length > 0) {
               plantIndexes.forEach((piEl, pI) => {
@@ -77,27 +91,40 @@ export default function Plants() {
               })
             }
           }
+          // if (trg != null) {
+          //   if (trg?.getAttribute(`data-swapy-slot`)?.startsWith(`subtask`)) {
+          //     return true; // Prevent swapping into subtask slots
+          //   }
+          // }
         })
       }
     } else {
       setSwapping(false);
-      swapyRef.current?.destroy();
+      swapyOuterRef.current?.destroy();
     }
+
+    console.log(`outer`, {swapping})
 
     return () => {
       setSwapping(false);
-      swapyRef.current?.destroy();
+      swapyOuterRef.current?.destroy();
     }
-  }, [user, plants, setPlants]);
+  }, [user, plants, swapping, setPlants, setSwapping]);
 
   return <>
     <Page id={`plants`} title={`Plants`}>
       <Main className={`plants`} desc={`A place to manage your plants`}>
+        {/* <Section className={`experimentsSection`} fontColor={`white`} background={`var(--primaryVariant)`}>
+          <DND />
+        </Section> */}
         <Section className={`plantsSection`} fontColor={`white`} background={`var(--secondaryVariant)`}>
           <h2>{swapping ? `Your` : ``} Plants</h2>
-          <div className={`plantsContainer`} ref={containerRef}>
+          <div className={`plantsContainer`} ref={plantsContainerRef}>
             {plants.map((plant: Plant, pIdx: any) => (
-              <PlantComponent key={pIdx} pIdx={pIdx} plant={plant} swapping={swapping} logoURL={logoURL} />
+              <div key={pIdx} className={`plant`}>
+                <PlantComponent key={pIdx} pIdx={pIdx} plant={plant} swapping={swapping} logoURL={logoURL} />
+                {/* <Subtasks plant={plant} /> */}
+              </div>
             ))}
           </div>
         </Section>

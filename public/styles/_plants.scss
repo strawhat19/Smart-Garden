@@ -5,6 +5,7 @@
     margin-top: 15px;
     grid-template-columns: repeat(4, 1fr);
     .plant {
+        width: 100%;
         display: flex;
         overflow: hidden;
         min-height: 300px;
@@ -12,6 +13,11 @@
         align-items: flex-end;
         flex-direction: column;
         justify-content: space-between;
+        .plant_inner {
+            width: 100%;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
         .plantImage {
             object-fit: cover;
             object-position: 100% 12%;
