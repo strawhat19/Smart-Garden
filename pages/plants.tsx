@@ -7,7 +7,7 @@ import { ROLES } from '../shared/types/users';
 import { Plant } from '../shared/types/plants';
 import React, { useEffect, useRef } from 'react';
 import PlantComponent from '../components/plant';
-import { devEnv, guest, logoURL, sharedDatabase } from '../shared/shared';
+import { devEnv, guest, logoURL, sharedDatabase, updateIndexBadges } from '../shared/shared';
 
 export const checkForStoredPlants = (setPlants: any) => {
   let hasStoredPlants = localStorage.getItem(`plants`);
@@ -27,6 +27,45 @@ export default function Plants() {
   let [swapping, setSwapping] = useState(false);
   let containerRef = useRef<HTMLDivElement>(null);
   let { user, plants, setPlants } = useContext<any>(sharedDatabase);
+
+  const addPlant = () => {
+
+    let existingIDs: any = [];
+    let newID = Math.random().toString(36).substr(2, 9);
+    if (existingIDs && existingIDs.length > 0) {
+      while (existingIDs.includes(newID)) {
+        newID = Math.random().toString(36).substr(2, 9);
+      }
+    }
+
+    setPlants((prevPlants: any) => [...prevPlants, {
+      "id": newID,
+      "genus_id": 1872,
+      "rank": "species",
+      "genus": "Trifolium",
+      "family": "Fabaceae",
+      "status": "accepted",
+      "author": "L.",
+      "family_name": null,
+      "name": "Dutch Clover",
+      "discovered_year": 1753,
+      "slug": "trifolium-repens",
+      "scientific_name": "Trifolium repens",
+      "bibliography": "Sp. Pl.: 767 (1753)",
+      "image": "https://bs.plantnet.org/image/o/170ca6a6020d9e9f95f86112577aeabcb23f5b96",
+      "links": {
+          "self": "/api/v1/species/trifolium-repens",
+          "plant": "/api/v1/plants/trifolium-repens",
+          "genus": "/api/v1/genus/trifolium"
+      },
+      "synonyms": [
+          "Trifolium repens var. maculatum",
+          "Amoria repens"
+      ]
+    }])
+
+    updateIndexBadges();
+  }
 
   useEffect(() => {
     const initializePlants = (plnts: Plant[] = plants) => {
@@ -56,7 +95,7 @@ export default function Plants() {
     let userIsSignedIn = user != guest && user.level >= ROLES.Subscriber.level;
     let swapyEnabled = devEnv || userIsSignedIn;
 
-    if (swapyEnabled == false) {
+    if (swapyEnabled) {
       if (containerRef.current) {
         setSwapping(true);
         swapyRef.current = createSwapy(containerRef.current, {
@@ -65,18 +104,13 @@ export default function Plants() {
           autoScrollOnDrag: true,
         });
         swapyRef.current.onSwapEnd((onSwapEndEvent) => {
-          let { hasChanged, slotItemMap } = onSwapEndEvent;
-          let { asObject } = slotItemMap;
-          if (hasChanged) {
-            let updatedArrayOfPlants = Object.values(asObject).map(plnt => new Plant(JSON.parse(plnt)));
-            localStorage.setItem(`plants`, JSON.stringify(updatedArrayOfPlants));
-            let plantIndexes = document.querySelectorAll(`.plantIndex`);
-            if (plantIndexes && plantIndexes.length > 0) {
-              plantIndexes.forEach((piEl, pI) => {
-                piEl.innerHTML = (pI + 1).toString();
-              })
-            }
-          }
+          // let { hasChanged, slotItemMap } = onSwapEndEvent;
+          // let { asObject } = slotItemMap;
+          // if (hasChanged) {
+            // let updatedArrayOfPlants = Object.values(asObject).map(plnt => new Plant(JSON.parse(plnt)));
+            // localStorage.setItem(`plants`, JSON.stringify(updatedArrayOfPlants));
+            updateIndexBadges();
+          // }
         })
       }
     } else {
@@ -100,6 +134,11 @@ export default function Plants() {
               <PlantComponent key={pIdx} pIdx={pIdx} plant={plant} swapping={swapping} logoURL={logoURL} />
             ))}
           </div>
+        </Section>
+        <Section>
+          <button onClick={() => addPlant()}>
+            Add Plant
+          </button>
         </Section>
       </Main>
     </Page>

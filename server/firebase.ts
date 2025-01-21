@@ -21,30 +21,32 @@ export const db = getFirestore(app);
 export const auth = getAuth(app);
 
 export const Environments = {
-    prod: ``,
-    beta: `beta_`,
+  prod: ``,
+  beta: `beta_`,
 }
   
 export const DatabaseTableNames = {
-    users: `users`,
-    plants: `plants`,
+  users: `users`,
+  plants: `plants`,
 }
 
 export const environment = process.env.NODE_ENV == `production` ? Environments.prod : Environments.beta;
 
+export const usersDatabaseTableName = environment + DatabaseTableNames.users;
+export const plantsDatabaseTableName = environment + DatabaseTableNames.users;
+
 export const userConverter = {
-    toFirestore: (usr: User) => {
-      return JSON.parse(JSON.stringify(usr));
-    },
-    fromFirestore: (snapshot: any, options: any) => {
-      const data = snapshot.data(options);
-      return new User(data);
-    }
+  toFirestore: (usr: User) => {
+    return JSON.parse(JSON.stringify(usr));
+  },
+  fromFirestore: (snapshot: any, options: any) => {
+    const data = snapshot.data(options);
+    return new User(data);
+  }
 }
 
-export const usersDatabaseCollection = environment + DatabaseTableNames.users;
 export const addUser = async (usr: User) => {
-  const userReference = doc(db, usersDatabaseCollection, usr?.id).withConverter(userConverter);
+  const userReference = doc(db, usersDatabaseTableName, usr?.id).withConverter(userConverter);
   await setDoc(userReference, usr as User);
 };
 

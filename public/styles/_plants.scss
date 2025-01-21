@@ -20,6 +20,14 @@
             position: absolute;
             margin: 5px 5px 0 0;
         }
+        .plantDelete {
+            cursor: pointer;
+            margin: 5px 40px 0 0;
+            &:hover {
+                color: black;
+                background: white;
+            }
+        }
         .plantDataRow {
             width: 100%;
             display: flex;

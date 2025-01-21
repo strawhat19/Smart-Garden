@@ -18,6 +18,15 @@ export const devEnv = process.env.NODE_ENV == `development` ? showDevFeatures : 
 // export const devEnv = localEnv || urlHostIncludes(`dev`) ? showDevFeatures : false;
 // export const prodEnv = urlHostIncludes(`kenzacloud.com`) && (!localEnv && !devEnv) ? true : false;
 
+export const updateIndexBadges = (selector = `.plantIndex`) => {
+    let itemIndexes = document.querySelectorAll(selector);
+    if (itemIndexes && itemIndexes.length > 0) {
+        itemIndexes.forEach((piEl, pI) => {
+            piEl.innerHTML = (pI + 1).toString();
+        })
+    }
+}
+
 export const sharedDatabase = createContext<any>({});
 
 export default function SharedData({ children }: any) {
